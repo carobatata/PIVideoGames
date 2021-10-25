@@ -45,7 +45,7 @@ router.get('/', (req, res, next) => {
             }
         })
         let allVideogames = [... filteredVideogameApi, ... videogameDb];
-        res.send(allVideogames);
+        res.send(allVideogames.slice(0, 15));
     })
 
     .catch((error) => {
@@ -56,7 +56,3 @@ router.get('/', (req, res, next) => {
 
 module.exports = router;
 
-
-// [ ] GET /videogames?name="...":
-// Obtener un listado de las primeros 15 videojuegos que contengan la palabra ingresada como query parameter
-// Si no existe ningún videojuego mostrar un mensaje adecuado
