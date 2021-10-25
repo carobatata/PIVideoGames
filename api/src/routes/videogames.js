@@ -41,7 +41,8 @@ router.get('/', (req, res, next) => {
                 image: v.background_image,
                 releaseDate: v.released,
                 rating: v.rating,
-                platforms: v.platforms
+                platforms: v.platforms,
+                // genres: v.genres.name
             }
         })
         let allVideogames = [... filteredVideogameApi, ... videogameDb];

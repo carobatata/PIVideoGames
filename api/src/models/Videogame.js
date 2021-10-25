@@ -31,6 +31,9 @@ module.exports = (sequelize) => {
       type: DataTypes.JSON,
       allowNull: false,
     },
+    // genres: {
+    //   type: DataTypes.STRING,
+    // },
   });
 };
 
