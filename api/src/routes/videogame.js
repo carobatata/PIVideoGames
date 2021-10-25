@@ -17,8 +17,6 @@ router.get('/:idVideogame', async (req, res, next) => {
             //es de la API
             videogame = await axios.get(`https://api.rawg.io/api/games/${idVideogame}?key=${APIKEY}`);
             videogame = videogame.data;
-            console.log(videogame);
-            console.log(idVideogame)
             videogame = {
                 id: videogame.id,
                 name: videogame.name,
