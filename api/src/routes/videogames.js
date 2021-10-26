@@ -10,6 +10,18 @@ router.get('/', (req, res, next) => {
     let videogamePromiseApi;
     let videogamePromiseDb;
 
+    // let response = (await axios.get(`https://api.rawg.io/api/games?key=${API_KEY}&limit=100`))
+    //         apiVideogames=response.data.results
+    //         console.log(apiVideogames)
+
+    // let response2=await axios.get(response.data.next)
+    //         const videoGame2 = response2.data.results
+    //         console.log('TODO',response2)
+
+    //         dbVideogames = await Videogame.findAll({ include: Genero })
+
+    //         allVideo = dbVideogames.concat(apiVideogames.concat(videoGame2))
+
     if(name) {
         videogamePromiseApi = axios.get(`https://api.rawg.io/api/games?search=${name}&key=${APIKEY}`);
         videogamePromiseDb = Videogame.findAll({
@@ -46,7 +58,8 @@ router.get('/', (req, res, next) => {
             }
         })
         let allVideogames = [... filteredVideogameApi, ... videogameDb];
-        res.send(allVideogames.slice(0, 15));
+        res.send(allVideogames);
+        // res.send(allVideogames.slice(0, 15));
     })
 
     .catch((error) => {
