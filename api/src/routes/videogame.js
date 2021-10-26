@@ -45,7 +45,24 @@ router.post('/', async (req, res, next) => {
  }
 })
 
-
+// router.post('/', async (req, res, next) => {
+//     const { genres, name, image, description, releaseDate, rating, platforms  } = req.body;
+//     try {
+//     const newVideogame = await Videogame.create({
+//         name,
+//         image,
+//         description,
+//         releaseDate,
+//         rating,
+//         platforms
+//     })
+//     await newVideogame.addGenre(genres)
+//      res.send(newVideogame);
+//  } catch (error) {
+//      next(error);
+//  }
+//  })
+ 
 module.exports = router;
 
 // ] GET /videogame/{idVideogame}:
