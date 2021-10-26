@@ -2,11 +2,9 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getVideogames } from '../actions/index.js';
 import Videogame from './videogame';
-// import { connect } from 'react-redux';
-
 
 export default function Videogames() {
-    let videogames = useSelector((state) => state.videogames);
+    let videogames = useSelector((state) => state.filteredVideogames);
     let dispatch = useDispatch();
     
     useEffect(() => {
@@ -25,13 +23,3 @@ export default function Videogames() {
         </div>
     )
 }
-
-
-//   function mapStateToProps(state) {
-//     return {
-//       videogames: state.videogames,
-//     }
-//   };
-  
-  
-//   export default connect(mapStateToProps, { getVideogames} ) (Videogames);

@@ -1,4 +1,5 @@
-import { GET_VIDEOGAMES, SEARCH_VIDEOGAME } from '../actions';
+import { GET_VIDEOGAMES, SEARCH_VIDEOGAME, SORT } from '../actions';
+import { ASCENDENTE } from '../constants/sort.js';
 
 const initialState = {
     videogames : [],
@@ -10,18 +11,32 @@ const initialState = {
         case GET_VIDEOGAMES:
             return {
                 ...state,
-                videogames: action.payload
+                videogames: action.payload,
+                filteredVideogames: action.payload
             }
-    
         case SEARCH_VIDEOGAME:
             return {
                 ...state,
-                videogames: action.payload
-            }            
+                filteredVideogames: action.payload
+            }    
+        case SORT:
+            let orderedVideogames = [...state.videogames]
+            orderedVideogames = orderedVideogames.sort((a, b) => {
+                if(a.name < b.name) {
+                    return action.payload === ASCENDENTE ? -1 : 1;
+                }
+                if(a.name > b.name) {
+                    return action.payload === ASCENDENTE ? 1 : -1;
+                }
+                return 0
+            })
+            return{
+                ...state,
+                filteredVideogames: orderedVideogames
+            }        
           default:
               return state;
       }  
-    
     };
     
     // if(action.type === "ADD_MOVIE_FAVORITE") {
