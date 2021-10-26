@@ -16,7 +16,9 @@ export default function Videogames() {
     return (
         <div>
             {videogames.map((videogame) => {
-                return <Videogame image={videogame.image} name={videogame.name} 
+                return <Videogame 
+                    image={videogame.image} 
+                    name={videogame.name}
                 // genres={videogame.genres}
                 />
             })}
