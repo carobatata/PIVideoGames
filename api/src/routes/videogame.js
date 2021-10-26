@@ -11,11 +11,9 @@ router.get('/:idVideogame', async (req, res, next) => {
         let videogame;
         if(typeof idVideogame === 'string' && idVideogame.length > 7) {
             //es mi id
-            videogame = await Videogame.findByPk(idVideogame, {
-                include: Genre
-                //esto de Genre no me está funcionando.
-            });
+            videogame = await Videogame.findByPk(idVideogame);
             res.send(videogame);
+
         } else {
             //es de la API
             videogame = await axios.get(`https://api.rawg.io/api/games/${idVideogame}?key=${APIKEY}`);
@@ -40,10 +38,7 @@ router.get('/:idVideogame', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
  try {
     const videogame = req.body;
-    const newVideogame = await Videogame.create({
-        ...videogame,
-        id: uuidv4()
-     })
+    const newVideogame = await Videogame.create(videogame)
      res.send(newVideogame);
  } catch (error) {
      next(error);

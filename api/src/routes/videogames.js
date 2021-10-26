@@ -10,19 +10,32 @@ router.get('/', async (req, res, next) => {
     const { name } = req.query;
     let videogamePromiseApi;
     let videogamePromiseDb;
+    let allVideogames;
     try {
         if(name) {
             videogamePromiseApi = await axios.get(`https://api.rawg.io/api/games?search=${name}&key=${APIKEY}`);
+            videogamePromiseApi = videogamePromiseApi.data.results.map((v) => {
+                return {
+                    id: v.id,
+                    name: v.name,
+                    description: v.description,
+                    image: v.background_image,
+                    releaseDate: v.released,
+                    rating: v.rating,
+                    platforms: v.platforms.map(p => p.platform.name),
+                    genres: v.genres.map(g => g.name)
+                }})
+
             videogamePromiseDb = await Videogame.findAll({
                 where: {
                     name: {
                         [Op.iLike]: "%" + name + "%"
                     }
                 },
-                order: [
-                    ['name', 'ASC'],
-                ],
             });
+
+            allVideogames = [...videogamePromiseDb, ...videogamePromiseApi];
+            allVideogames = allVideogames.slice(0, 15);
     
         } else {
             
@@ -50,12 +63,10 @@ router.get('/', async (req, res, next) => {
                     genres: v.genres.map(g => g.name)
                 }
             })
-    
-           // let filteredVideogameApi = videogameApi.data.results.map((v) => {
+            allVideogames = [...videogamePromiseApi, ...videogamePromiseDb];
         }
-            let allVideogames = [...videogamePromiseApi, ...videogamePromiseDb];
             res.send(allVideogames);
-            // res.send(allVideogames.slice(0, 15));
+       
 
     }
         catch (error) {
