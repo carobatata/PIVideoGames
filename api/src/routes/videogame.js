@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const { v4: uuidv4 } = require('uuid');
 const axios = require('axios');
-const { Videogame } = require('../db');
+const { Videogame, Genre } = require('../db');
 const { APIKEY } = process.env;
 const router = Router();
 
@@ -11,7 +11,10 @@ router.get('/:idVideogame', async (req, res, next) => {
         let videogame;
         if(typeof idVideogame === 'string' && idVideogame.length > 7) {
             //es mi id
-            videogame = await Videogame.findByPk(idVideogame);
+            videogame = await Videogame.findByPk(idVideogame, {
+                include: Genre
+                //esto de Genre no me está funcionando.
+            });
             res.send(videogame);
         } else {
             //es de la API
@@ -24,7 +27,8 @@ router.get('/:idVideogame', async (req, res, next) => {
                 image: videogame.background_image,
                 releaseDate: videogame.released,
                 rating: videogame.rating,
-                platforms: videogame.platforms
+                platforms: videogame.platforms.map(p => p.platform.name)
+                // genre: videogame.genres.map(g => g.name)
             }
             res.send(videogame);
         }

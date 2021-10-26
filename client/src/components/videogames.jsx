@@ -11,8 +11,6 @@ export default function Videogames() {
         dispatch(getVideogames())
     }, [])
 
-    console.log(videogames);
-
     return (
         <div>
             {videogames.map((videogame) => {

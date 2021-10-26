@@ -5,6 +5,7 @@ import { useParams } from 'react-router';
 export default function VideogameDetail() {
     const [videogame, setVideogame] = useState(null);
     let { id } = useParams();
+
     useEffect(() => {
         axios.get(`http://localhost:3001/videogame/${id}`)
         .then((response) => {
@@ -20,7 +21,8 @@ export default function VideogameDetail() {
                     <h5>{videogame.releaseDate}</h5>
                     <p>{videogame.description}</p>
                     <h6>Rating: {videogame.rating}</h6>
-                    {/* <p>{videogame.platforms}</p> rompe cuando pongo platforms */}
+                    <p>{videogame.platforms}</p> 
+                    {/* <p>{videogame.genres}</p> */}
                     {/* me falta genres */}
                 </div>
             )

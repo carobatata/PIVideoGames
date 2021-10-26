@@ -34,11 +34,12 @@ export default function AddVideogame() {
                 onChange={handleChange} />
 
             <label>Description:</label>
-            <input 
-                type='text'
-                name='description'
-                value={videogame.description}
-                onChange={handleChange} />
+
+            <textarea 
+              name= 'description' 
+              value= {videogame.description}
+              onChange={handleChange}>
+            </textarea>
 
             <label>Release Date:</label>
             <input 
