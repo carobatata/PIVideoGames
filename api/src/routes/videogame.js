@@ -51,7 +51,6 @@ router.post('/', async (req, res, next) => {
     })
 
     newVideogame.addGenre(genreDb);
-    console.log(newVideogame)
     res.send(newVideogame);
  } catch (error) {
      next(error);
