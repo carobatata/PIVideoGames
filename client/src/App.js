@@ -1,10 +1,11 @@
 import { Route, Switch } from 'react-router';
 import './App.css';
-import Videogames from './components/videogames';
-import SearchBar from './components/searchBar';
-import Order from './components/order';
-import VideogameDetail from './components/videogameDetail';
-import AddVideogame from './components/addVideogame';
+import Videogames from './components/Videogames';
+import SearchBar from './components/SearchBar';
+import Order from './components/Order';
+import VideogameDetail from './components/VideogameDetail';
+import AddVideogame from './components/AddVideogame';
+import LandingPage from './components/LandingPage';
 
 function App() {
   return (
@@ -12,6 +13,9 @@ function App() {
       <SearchBar />
       <Switch>
         <Route exact path='/'> 
+          <LandingPage/>
+        </Route> 
+        <Route exact path='/home'> 
           <Order />
           <Videogames/>
         </Route> 

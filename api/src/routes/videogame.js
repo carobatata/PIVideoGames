@@ -25,8 +25,8 @@ router.get('/:idVideogame', async (req, res, next) => {
                 image: videogame.background_image,
                 releaseDate: videogame.released,
                 rating: videogame.rating,
-                platforms: videogame.platforms.map(p => p.platform.name)
-                // genre: videogame.genres.map(g => g.name)
+                platforms: videogame.platforms.map(p => p.platform.name),
+                genres: videogame.genres.map(g => g.name)
             }
             res.send(videogame);
         }
@@ -36,32 +36,27 @@ router.get('/:idVideogame', async (req, res, next) => {
 })
 
 router.post('/', async (req, res, next) => {
- try {
-    const videogame = req.body;
-    const newVideogame = await Videogame.create(videogame)
-     res.send(newVideogame);
+    let { genres, name, image, description, releaseDate, rating, platforms  } = req.body;
+    try {
+    let  newVideogame = await Videogame.create({
+        name,
+        image,
+        description,
+        releaseDate,
+        rating,
+        platforms
+    })
+    let genreDb = await Genre.findAll({
+        where: {name: genres }
+    })
+
+    newVideogame.addGenre(genreDb);
+    console.log(newVideogame)
+    res.send(newVideogame);
  } catch (error) {
      next(error);
  }
-})
-
-// router.post('/', async (req, res, next) => {
-//     const { genres, name, image, description, releaseDate, rating, platforms  } = req.body;
-//     try {
-//     const newVideogame = await Videogame.create({
-//         name,
-//         image,
-//         description,
-//         releaseDate,
-//         rating,
-//         platforms
-//     })
-//     await newVideogame.addGenre(genres)
-//      res.send(newVideogame);
-//  } catch (error) {
-//      next(error);
-//  }
-//  })
+ })
  
 module.exports = router;
 

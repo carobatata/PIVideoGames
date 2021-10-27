@@ -22,8 +22,7 @@ export default function VideogameDetail() {
                     <p>{videogame.description}</p>
                     <h6>Rating: {videogame.rating}</h6>
                     <p>{videogame.platforms}</p> 
-                    {/* <p>{videogame.genres}</p> */}
-                    {/* me falta genres */}
+                    <p>{videogame.genres}</p>
                 </div>
             )
         } else {

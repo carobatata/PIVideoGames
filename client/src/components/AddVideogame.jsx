@@ -43,7 +43,7 @@ export default function AddVideogame() {
 
             <label>Release Date:</label>
             <input 
-                type='text'
+                type='date'
                 name='releaseDate'
                 value={videogame.releaseDate}
                 onChange={handleChange} />
