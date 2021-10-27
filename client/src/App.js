@@ -2,7 +2,6 @@ import { Route, Switch } from 'react-router';
 import './App.css';
 import Videogames from './components/Videogames';
 import SearchBar from './components/SearchBar';
-import Order from './components/Order';
 import VideogameDetail from './components/VideogameDetail';
 import AddVideogame from './components/AddVideogame';
 import LandingPage from './components/LandingPage';
@@ -16,7 +15,6 @@ function App() {
           <LandingPage/>
         </Route> 
         <Route exact path='/home'> 
-          <Order />
           <Videogames/>
         </Route> 
         <Route exact path='/addVideogame'> 

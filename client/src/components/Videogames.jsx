@@ -4,6 +4,8 @@ import { getVideogames } from '../actions/index.js';
 import { Link } from 'react-router-dom';
 import Videogame from './Videogame';
 import Paginado from './Paginado.jsx';
+import FilterByCreation from './FilterByCreation.jsx';
+import Order from './Order'
 
 export default function Videogames() {
 
@@ -36,6 +38,10 @@ export default function Videogames() {
             <Link to='addVideogame'>Create yours</Link>
             <h6>Videogames World</h6>
             <button onClick={e=> {handleClick(e)}}>Reset Videogames</button>
+
+            <FilterByCreation/>
+
+            <Order/>
 
             <Paginado
                 videogamesPerPage={videogamesPerPage}

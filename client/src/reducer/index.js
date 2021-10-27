@@ -1,5 +1,4 @@
-import { GET_VIDEOGAMES, SEARCH_VIDEOGAME, SORT } from '../actions';
-import { ASCENDENTE } from '../constants/sort.js';
+import { FILTER_CREATED, GET_VIDEOGAMES, SEARCH_VIDEOGAME, SORT } from '../actions';
 
 const initialState = {
     videogames : [],
@@ -23,17 +22,26 @@ const initialState = {
             let orderedVideogames = [...state.videogames]
             orderedVideogames = orderedVideogames.sort((a, b) => {
                 if(a.name < b.name) {
-                    return action.payload === ASCENDENTE ? -1 : 1;
+                    return action.payload === 'ascendente' ? -1 : 1;
                 }
                 if(a.name > b.name) {
-                    return action.payload === ASCENDENTE ? 1 : -1;
+                    return action.payload === 'ascendente' ? 1 : -1;
                 }
                 return 0
             })
             return{
                 ...state,
                 filteredVideogames: orderedVideogames
-            }        
+            }
+        case FILTER_CREATED:
+            let allVideogames = [...state.videogames];
+            let filterCreated = action.payload === 'created' ? allVideogames.filter(v => v.createdInDb) : allVideogames.filter(v => !v.createdInDb);
+            return{
+                ...state,
+                filteredVideogames: filterCreated,
+                // filteredVideogames: action.payload === 'All'? state.allVideogames : filterCreated,
+
+            }
           default:
               return state;
       }  

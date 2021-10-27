@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function Paginado({videogamesPerPage, videogames, paginado}) {
     const pageNumbers = [];
     for(var i=1; i <= Math.ceil(videogames/videogamesPerPage); i++) {
