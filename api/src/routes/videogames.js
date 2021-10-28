@@ -1,10 +1,10 @@
 const { Router } = require('express');
-const { Videogame } = require('../db');
+const { Videogame, Genre } = require('../db');
 const router = Router();
 const axios = require('axios');
 const { APIKEY } = process.env;
 const {Op} = require('sequelize');
-const { Genre } = require('../models/Genre');
+// const { Genre } = require('../models/Genre');
 
 router.get('/', async (req, res, next) => {
     const { name } = req.query;
@@ -39,8 +39,16 @@ router.get('/', async (req, res, next) => {
     
         } else {
             
-            videogamePromiseDb = await Videogame.findAll({include: Genre});
-    
+            videogamePromiseDb = await Videogame.findAll({
+                include: [{
+                    model: Genre,
+                    attributes: ['name'],
+                    through: {
+                        attributes: []
+                    }
+                }]
+            })
+            
             var promises = [
                 axios.get(`https://api.rawg.io/api/games?key=${APIKEY}`),
                 axios.get(`https://api.rawg.io/api/games?key=${APIKEY}&page=2`),
