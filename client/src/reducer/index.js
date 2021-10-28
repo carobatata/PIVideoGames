@@ -1,8 +1,9 @@
-import { FILTER_CREATED, GET_VIDEOGAMES, SEARCH_VIDEOGAME, SORT } from '../actions';
+import { FILTER_CREATED, GET_VIDEOGAMES, SEARCH_VIDEOGAME, SORT, GET_GENRES, FILTER_GENRE } from '../actions';
 
 const initialState = {
     videogames : [],
-    filteredVideogames: []
+    filteredVideogames: [],
+    genres: []
   };
 
   export default function reducer(state = initialState, action) {
@@ -18,6 +19,11 @@ const initialState = {
                 ...state,
                 filteredVideogames: action.payload
             }    
+        case GET_GENRES:
+            return {
+                ...state,
+                genres: action.payload
+            }
         case SORT:
             let orderedVideogames = [...state.videogames]
             orderedVideogames = orderedVideogames.sort((a, b) => {
@@ -32,6 +38,13 @@ const initialState = {
             return{
                 ...state,
                 filteredVideogames: orderedVideogames
+            }
+        case FILTER_GENRE:
+            let allTheVideogames = [...state.videogames];
+            let filterGenre = allTheVideogames.filter(v => v.genres === action.payload);
+            return {
+                ...state,
+                filteredVideogames: filterGenre
             }
         case FILTER_CREATED:
             let allVideogames = [...state.videogames];

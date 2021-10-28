@@ -10,9 +10,9 @@ export default function FilterByCreation() {
     }
     
     return(
-        <select name="Filter by Creation" onChange={handleFilterCreated}>
+        <select onChange={handleFilterCreated}>
             <option value='created'>Created by Me</option>
             <option value='api'>Already Existed</option>
         </select>
     )
-}
+};

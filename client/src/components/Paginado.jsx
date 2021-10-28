@@ -1,3 +1,5 @@
+import s from  './Paginado.module.css';
+
 export default function Paginado({videogamesPerPage, videogames, paginado}) {
     const pageNumbers = [];
     for(var i=1; i <= Math.ceil(videogames/videogamesPerPage); i++) {
@@ -8,7 +10,7 @@ export default function Paginado({videogamesPerPage, videogames, paginado}) {
         <nav>
             <ul>
                 {pageNumbers.map(number => (
-                    <li>
+                    <li className={s.pagina}>
                         <a onClick={() => paginado(number)}>{number}</a>
                     </li>
                 ))}

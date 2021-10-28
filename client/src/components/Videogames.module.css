@@ -1,0 +1,16 @@
+.flexItem {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+/* .paginado {
+    display: flex;
+    background-color: lightcoral;
+    justify-content: space-between;
+
+
+} */
+
+
+

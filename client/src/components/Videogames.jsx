@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getVideogames } from '../actions/index.js';
 import Videogame from './Videogame';
 import Paginado from './Paginado.jsx';
+import s from  './Videogames.module.css';
 
 export default function Videogames() {
 
@@ -32,12 +33,14 @@ export default function Videogames() {
     return (
         <div>
             <button onClick={e=> {handleClick(e)}}>Reset Videogames</button>
-
+            <div className={s.paginado}>
             <Paginado
                 videogamesPerPage={videogamesPerPage}
                 videogames={videogames.length}
                 paginado = {paginado}/>
+            </div>
 
+            <div className={s.flexItem}>
             {currentVideogames?.map((videogame) => {
                 return <Videogame 
                     id={videogame.id}
@@ -46,6 +49,8 @@ export default function Videogames() {
                     genres={videogame.genres}
                 />
             })}
+            </div>
+
 
         </div>
     )

@@ -1,0 +1,26 @@
+/* .flexContainer {
+    border: 1px solid;
+    display: flex;
+    border-radius: 10px;
+    border-color: grey;
+    margin: 10px;
+    flex-direction: row;
+    position: relative;
+    width: 300px;
+    display: flex;
+
+} */
+
+/* .flexItem {
+    background-color: lightblue;
+    display: flex;
+    margin-top: 15px;
+    margin-bottom: 30px;
+    align-items: center;
+} */
+
+.image {
+    width: 50%;
+    height: 50%;
+}
+
