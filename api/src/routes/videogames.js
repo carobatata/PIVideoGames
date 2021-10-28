@@ -4,7 +4,6 @@ const router = Router();
 const axios = require('axios');
 const { APIKEY } = process.env;
 const {Op} = require('sequelize');
-// const { Genre } = require('../models/Genre');
 
 router.get('/', async (req, res, next) => {
     const { name } = req.query;
@@ -48,7 +47,7 @@ router.get('/', async (req, res, next) => {
                     }
                 }]
             })
-            
+
             var promises = [
                 axios.get(`https://api.rawg.io/api/games?key=${APIKEY}`),
                 axios.get(`https://api.rawg.io/api/games?key=${APIKEY}&page=2`),
