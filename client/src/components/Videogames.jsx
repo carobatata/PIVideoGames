@@ -31,14 +31,8 @@ export default function Videogames() {
     }
 
     return (
-        <div>
+        <div className={s.container}>
             <button onClick={e=> {handleClick(e)}}>Reset Videogames</button>
-            <div className={s.paginado}>
-            <Paginado
-                videogamesPerPage={videogamesPerPage}
-                videogames={videogames.length}
-                paginado = {paginado}/>
-            </div>
 
             <div className={s.flexItem}>
             {currentVideogames?.map((videogame) => {
@@ -47,8 +41,17 @@ export default function Videogames() {
                     image={videogame.image} 
                     name={videogame.name}
                     genres={videogame.genres}
+                    rating={videogame.rating}
                 />
-            })}
+            })} 
+            
+            </div>
+
+            <div className={s.paginado}>
+             <Paginado
+                videogamesPerPage={videogamesPerPage}
+                videogames={videogames.length}
+                paginado = {paginado}/>
             </div>
 
 

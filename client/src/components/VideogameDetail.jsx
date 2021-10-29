@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useParams } from 'react-router';
 
 export default function VideogameDetail() {
-    const [videogame, setVideogame] = useState(null);
+    const [videogame, setVideogame] = useState();
     let { id } = useParams();
 
     useEffect(() => {

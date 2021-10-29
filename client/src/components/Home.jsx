@@ -1,9 +1,10 @@
 import s from  './Home.module.css';
 import { Link } from 'react-router-dom';
 import Videogames from './Videogames';
-import FilterByCreation from './FilterByCreation.jsx';
-import FilterByGenre from './FilterByGenres';
-import Order from './Order'
+import FilterByCreation from './Filters/FilterByCreation.jsx';
+import FilterByGenre from './Filters/FilterByGenre';
+import RatingOrder from './Orders/RatingOrder';
+import AlphabeticalOrder from './Orders/AlphabeticalOrder'
 
 export default function Home() {
 
@@ -17,7 +18,9 @@ export default function Home() {
 
             <FilterByGenre/>
 
-            <Order/>
+            <AlphabeticalOrder/>
+
+            <RatingOrder/>
 
             <Videogames/>
 

@@ -1,9 +1,10 @@
-import { FILTER_CREATED, GET_VIDEOGAMES, SEARCH_VIDEOGAME, SORT, GET_GENRES, FILTER_GENRE } from '../actions';
+import { FILTER_CREATED, GET_VIDEOGAMES, SEARCH_VIDEOGAME, SORT, GET_GENRES, FILTER_GENRE, RATING_SORT, POST_VIDEOGAME, GET_PLATFORMS } from '../actions';
 
 const initialState = {
     videogames : [],
     filteredVideogames: [],
-    genres: []
+    genres: [],
+    platforms: []
   };
 
   export default function reducer(state = initialState, action) {
@@ -19,13 +20,23 @@ const initialState = {
                 ...state,
                 filteredVideogames: action.payload
             }    
+        case FILTER_GENRE:
+            return {
+                ...state,
+                filteredVideogames: action.payload
+            }    
         case GET_GENRES:
             return {
                 ...state,
-                genres: action.payload
+                genres:
+                 action.payload
+            }
+        case POST_VIDEOGAME:
+            return{
+                ...state,
             }
         case SORT:
-            let orderedVideogames = [...state.videogames]
+            let orderedVideogames = [...state.videogames];
             orderedVideogames = orderedVideogames.sort((a, b) => {
                 if(a.name < b.name) {
                     return action.payload === 'ascendente' ? -1 : 1;
@@ -39,24 +50,42 @@ const initialState = {
                 ...state,
                 filteredVideogames: orderedVideogames
             }
-        case FILTER_GENRE:
-            let allTheVideogames = [...state.videogames];
-            let filterGenre = allTheVideogames.filter(v => v.genres === action.payload);
-            return {
-                ...state,
-                filteredVideogames: filterGenre
-            }
         case FILTER_CREATED:
             let allVideogames = [...state.videogames];
-            let filterCreated = action.payload === 'created' ? allVideogames.filter(v => v.createdInDb) : allVideogames.filter(v => !v.createdInDb);
+            const filterCreated = action.payload === 'created' ? allVideogames.filter(v => v.createdInDb) : allVideogames.filter(v => !v.createdInDb);
             return{
                 ...state,
                 filteredVideogames: filterCreated,
-                // filteredVideogames: action.payload === 'All'? state.allVideogames : filterCreated,
-
             }
-          default:
-              return state;
+        // case FILTER_GENRE:
+        //     let allTheVideogames = [...state.videogames];
+        //     let filterGenre = allTheVideogames.filter(v => v.genres === action.payload);
+        //     return {
+        //         ...state,
+        //         filteredVideogames: filterGenre
+        //     }
+        case RATING_SORT:
+            let orderedRatings = [...state.videogames]
+            orderedRatings = orderedRatings.sort((a, b) => {
+                if(a.rating < b.rating) {
+                    return action.payload === 'asc' ? -1 : 1;
+                }
+                if(a.rating > b.rating) {
+                   return action.payload === 'asc' ? 1 : -1;
+                }
+                return 0
+                })
+                return{
+                    ...state,
+                    filteredVideogames: orderedRatings
+                }
+        case GET_PLATFORMS:
+            return {
+                ...state,
+                platforms: action.payload
+            }
+        default:
+            return state;
       }  
     };
     

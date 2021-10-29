@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
-import { sort } from '../actions/index.js';
+import { sort } from '../../actions/index.js';
 
-export default function Order() {
+export default function AlphabeticalOrder() {
     
     const dispatch = useDispatch();
 
