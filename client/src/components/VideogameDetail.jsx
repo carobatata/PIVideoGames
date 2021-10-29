@@ -11,7 +11,7 @@ export default function VideogameDetail() {
         .then((response) => {
             setVideogame(response.data)
         })
-    })
+    }, [])
 
         if(videogame) {
             return(

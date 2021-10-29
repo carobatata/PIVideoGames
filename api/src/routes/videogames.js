@@ -42,9 +42,24 @@ async function getAllVideogames() {
             }
         }]
     })
+    videogamePromiseDb = videogamePromiseDb.map((v) => {
+        return {
+            id: v.id,
+            name: v.name,
+            description: v.description,
+            image: v.background_image,
+            releaseDate: v.released,
+            rating: v.rating,
+            platforms: v.platforms.map(p => p.platform?.name),
+            genres: v.genres.map(g => g.name),
+            createdInDb: v.createdInDb
+        }})
+
+
     let videogamePromiseApi = await getAllVideogamesFromApi()
 
     return [...videogamePromiseApi, ...videogamePromiseDb];
+
 }
 
 router.get('/', async (req, res, next) => {
