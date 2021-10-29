@@ -7,7 +7,6 @@
   export const RATING_SORT = 'RATING_SORT';
   export const POST_VIDEOGAME = 'POST_VIDEOGAME';
   export const FILTER_GENRE = 'FILTER_GENRE';
-  export const GET_PLATFORMS = 'GET_PLATFORMS';
 
   export function getVideogames(){
       return function(dispatch){
@@ -105,13 +104,13 @@ export function postVideogame(payload) {
     }
 };
 
-export function getPlatforms() {
-    return async function(dispatch) {
-        var platforms = await axios('http://localhost:3001/platforms', {
-        })
-        return dispatch({
-            type: GET_PLATFORMS,
-            payload: platforms.data
-        })
-    }
-}
+// export function getPlatforms() {
+//     return async function(dispatch) {
+//         var platforms = await axios('http://localhost:3001/platforms', {
+//         })
+//         return dispatch({
+//             type: GET_PLATFORMS,
+//             payload: platforms.data
+//         })
+//     }
+// }

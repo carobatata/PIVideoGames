@@ -1,10 +1,9 @@
-import { FILTER_CREATED, GET_VIDEOGAMES, SEARCH_VIDEOGAME, SORT, GET_GENRES, FILTER_GENRE, RATING_SORT, POST_VIDEOGAME, GET_PLATFORMS } from '../actions';
+import { FILTER_CREATED, GET_VIDEOGAMES, SEARCH_VIDEOGAME, SORT, GET_GENRES, FILTER_GENRE, RATING_SORT, POST_VIDEOGAME } from '../actions';
 
 const initialState = {
     videogames : [],
     filteredVideogames: [],
     genres: [],
-    platforms: []
   };
 
   export default function reducer(state = initialState, action) {
@@ -79,11 +78,6 @@ const initialState = {
                     ...state,
                     filteredVideogames: orderedRatings
                 }
-        case GET_PLATFORMS:
-            return {
-                ...state,
-                platforms: action.payload
-            }
         default:
             return state;
       }  
