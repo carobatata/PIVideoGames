@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router';
+import { Link } from 'react-router-dom';
 
 export default function VideogameDetail() {
     const [videogame, setVideogame] = useState();
@@ -16,13 +17,18 @@ export default function VideogameDetail() {
         if(videogame) {
             return(
                 <div>
-                    <h3>{videogame.name}</h3>
-                    <img src={videogame.image} alt="VideogameImage" />
-                    <h5>{videogame.releaseDate}</h5>
-                    <p>{videogame.description}</p>
-                    <h6>Rating: {videogame.rating}</h6>
-                    <p>{videogame.platforms}</p> 
-                    <p>{videogame.genres}</p>
+                    <Link to='/home'>
+                        <button>Home</button>
+                    </Link>
+                    <div>
+                        <h3>{videogame.name}</h3>
+                        <img src={videogame.image} alt="VideogameImage" />
+                        <h5>{videogame.releaseDate}</h5>
+                        <p>{videogame.description}</p>
+                        <h6>Rating: {videogame.rating}</h6>
+                        <p>{videogame.platforms}</p> 
+                        <p>{videogame.genres}</p>
+                    </div>
                 </div>
             )
         } else {
