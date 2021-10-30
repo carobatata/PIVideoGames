@@ -8,6 +8,7 @@ import s from  './Videogames.module.css';
 export default function Videogames() {
 
     let videogames = useSelector((state) => state.filteredVideogames); //lo mismo que hacer el mapState
+    // videogames.splice(1)
 
     let dispatch = useDispatch();
     

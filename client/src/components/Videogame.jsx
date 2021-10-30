@@ -5,14 +5,15 @@ import s from  './Videogame.module.css';
 export default function Videogame({id, image, name, genres, rating}) {
     return(
         <div className={s.flexContainer}>
-            <Link to={`/${id}`}>
-            <div className={s.flexItem}>
-                <h2>{name}</h2>
-                <img className={s.image} src={image} alt="VideogameImage" />
-                <h4>{genres}</h4>
-                <h4>{rating}</h4>
-            </div> 
-            </Link>
-        </div>
+                <span>{name}</span>
+                <div>
+                    <img className={s.image} src={image} alt="VideogameImage" />
+                </div>
+                <div>
+                    {genres.map(genre => <span key={genre} >{genre}</span>)}
+                </div>
+                <div>{rating}</div> 
+                 <Link to={`/${id}`}>Click for more details</Link>
+            </div>
     )
 }

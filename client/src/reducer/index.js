@@ -54,7 +54,7 @@ const initialState = {
             const filterCreated = action.payload === 'created' ? allVideogames.filter(v => v.createdInDb) : allVideogames.filter(v => !v.createdInDb);
             return{
                 ...state,
-                filteredVideogames: filterCreated,
+                filteredVideogames: action.payload === 'all'? state.allVideogames: filterCreated
             }
         // case FILTER_GENRE:
         //     let allTheVideogames = [...state.videogames];

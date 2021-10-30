@@ -17,9 +17,9 @@ function validate(input) {
   } else if(!input.rating) {
   errors.rating = '*Rating is required'
   } else if(!input.genres) {
-  errors.rating = '*Select at least one genre'
+  errors.genres = '*Select at least one genre'
   } else if(!input.platforms) {
-  errors.rating = '*Select at least one platform'
+  errors.platforms = '*Select at least one platform'
 }
  return errors;
 };
@@ -101,25 +101,25 @@ export default function AddVideogame() {
           }
           
           
-          function handleDeleteGenre(e) {
+          function handleDeleteGenre(genre) {
             setVideogame({
               ...videogame,
-              genres: videogame.genres.filter(g => g !== e)
+              genres: videogame.genres.filter(g => g !== genre)
             })
           }
-
+          
+          function handleDeletePlatform(platform) {
+            setVideogame({
+              ...videogame,
+              platforms: videogame.platforms.filter(p => p !== platform)
+          })
+        }
+          
           useEffect(() => {
             dispatch(getGenres());
           }, []);
-          
-          function handleDeletePlatform(e) {
-              setVideogame({
-                  ...videogame,
-                  platforms: videogame.platforms.filter(p => p !== e)
-                })
-              }
-              
-        return (
+        
+          return (
                 
           <div>
             <Link to='/home'>
@@ -209,9 +209,9 @@ export default function AddVideogame() {
                       )}
 
                       {videogame.genres.map(g =>
-                        <div>
+                        <div key={g}>
                           <p>{g}</p>
-                          <button onClick={() => handleDeleteGenre(g)}>x</button>  
+                          <input type="button" value='X' onClick={()=> handleDeleteGenre(g)} /> 
                         </div>
                         )}
                   </div>
@@ -229,16 +229,16 @@ export default function AddVideogame() {
                       <p>{errors.platforms}</p>
                       )}
                     {videogame.platforms.map(p =>
-                      <div>
+                      <div key={p}>
                         <p>{p}</p>
-                        <button onClick={() => handleDeletePlatform(p)}>x</button>  
+                        <input type="button" value='X' onClick={() => handleDeletePlatform(p)} />
                       </div>
                       )}
                   </div>
                 </div>
 
                 <div className={s.formSection}>
-                  <button>Create Videogame</button>
+                  <input type="submit" value="CREATE" />
                 </div>
       
             </form>

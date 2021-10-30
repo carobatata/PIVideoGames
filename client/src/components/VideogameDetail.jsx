@@ -10,11 +10,14 @@ export default function VideogameDetail() {
     useEffect(() => {
         axios.get(`http://localhost:3001/videogame/${id}`)
         .then((response) => {
+            const { description } = response.data;
+            // const parser = new DOMParser();
+            // const htmlDoc = parser.parseFromString(description, 'text/html');
             setVideogame(response.data)
         })
     }, [])
-
-        if(videogame) {
+    
+    if(videogame) {
             return(
                 <div>
                     <Link to='/home'>
@@ -24,7 +27,7 @@ export default function VideogameDetail() {
                         <h3>{videogame.name}</h3>
                         <img src={videogame.image} alt="VideogameImage" />
                         <h5>{videogame.releaseDate}</h5>
-                        <p>{videogame.description}</p>
+                        <div dangerouslySetInnerHTML={{__html: videogame.description}}></div>
                         <h6>Rating: {videogame.rating}</h6>
                         <p>{videogame.platforms}</p> 
                         <p>{videogame.genres}</p>

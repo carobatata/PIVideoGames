@@ -21,7 +21,10 @@ export default function FilterByGenre() {
 
     return(
         <div>
+        <label>Filter by Genre</label>
+
         <select name="Genre Filter" onChange={handleSelectChange}>
+            <option></option>
             {genres.map((g) =>(
                 <option value={g.name}>{g.name}</option>
               ))}
