@@ -1,0 +1,42 @@
+.flexContainer {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: #6D8299;
+    margin: 50px 30px;
+}
+
+.form {
+    min-width: 400px;
+    flex: 1;
+    text-align: center;
+    padding: 30px;
+
+}
+
+.formImage {
+    flex:1;
+    display: flex;
+    padding: 10px;
+}
+
+.image {
+    height: 350px;
+    width: 400px;
+    border-radius: 30%;
+    padding: 12px;
+}
+
+.formSection {
+    width: 100%;
+    padding: 7px;
+    margin: 6px 0;
+    border: none;
+
+}
+
+.genrePlatforms {
+    background-color: #8CA1A5;
+
+}

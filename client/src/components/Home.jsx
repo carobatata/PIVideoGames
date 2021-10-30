@@ -10,7 +10,9 @@ export default function Home() {
 
     return (
         <div className={s.container}>
-            <Link to='addVideogame'>Create yours</Link>
+            <Link to='addVideogame'>
+                <button>CREATE</button>
+                </Link>
 
             <h6>Videogames World</h6>
 
