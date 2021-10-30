@@ -79,7 +79,7 @@ router.get('/', async (req, res, next) => {
                     image: v.background_image,
                     releaseDate: v.released,
                     rating: v.rating,
-                    platforms: v.platforms.map(p => p.platform.name),
+                    platforms: v.platforms.map(p => p.platform?.name),
                     genres: v.genres.map(g => g.name)
                 }})
 
@@ -120,7 +120,7 @@ router.get('/', async (req, res, next) => {
                     image: v.background_image,
                     releaseDate: v.released,
                     rating: v.rating,
-                    platforms: v.platforms.map(p => p.platform.name),
+                    platforms: v.platforms.map(p => p.platform?.name),
                     genres: v.genres.map(g => g.name),
                     createdInDb: v.createdInDb
                 }})

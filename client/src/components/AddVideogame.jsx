@@ -11,8 +11,12 @@ function validate(input) {
  } else if(!input.description) {
    errors.description = 'Description is required'
  } else if(!input.platforms) {
-   errors.description = 'Platforms are required'
- }
+   errors.platforms = 'Platforms are required'
+ } else if(!input.realeseDate) {
+  errors.realeseDate = 'Release date is required'
+} else if(!input.rating) {
+  errors.rating = 'Rating is required'
+}
  return errors;
 };
  
@@ -133,13 +137,7 @@ export default function AddVideogame() {
                   {errors.name && (
                     <p>{errors.name}</p>
                   )}
-      
-      
-      
-                  {errors.description && (
-                    <p>{errors.description}</p>
-                    )}
-      
+    
                   <label>Image(URL):</label>
                   <input
                     type='text'
@@ -150,9 +148,24 @@ export default function AddVideogame() {
                   <label>Release Date:</label>
                   <input
                     type='date'
-                    name='releaseDate'
-                    value={videogame.releaseDate}
+                    name='realeseDate'
+                    value={videogame.realeseDate}
                     onChange={handleChange} />
+                    {errors.realeseDate && (
+                    <p>{errors.realeseDate}</p>
+                  )}
+
+
+                <label>Description:</label>
+                <textarea
+                  name= 'description'
+                  value= {videogame.description}
+                  onChange={handleChange}>
+                </textarea>
+                {errors.description && (
+                    <p>{errors.description}</p>
+                    )}
+    
       
                   <label>Rating:</label>
                   <input
@@ -160,6 +173,9 @@ export default function AddVideogame() {
                     name='rating'
                     value={videogame.rating}
                     onChange={handleChange} />
+                    {errors.rating && (
+                    <p>{errors.rating}</p>
+                  )}
       
 
                   <select onChange={handleSelect}>
@@ -173,13 +189,10 @@ export default function AddVideogame() {
                         <option value={p}>{p}</option>
                       ))}
                   </select>
+                  {errors.platforms && (
+                    <p>{errors.platforms}</p>
+                    )}
 
-                <label>Description:</label>
-                <textarea
-                  name= 'description'
-                  value= {videogame.description}
-                  onChange={handleChange}>
-                </textarea>
       
                 <button>Add Videogame</button>
       

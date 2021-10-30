@@ -25,7 +25,7 @@ router.get('/:idVideogame', async (req, res, next) => {
                 image: videogame.background_image,
                 releaseDate: videogame.released,
                 rating: videogame.rating,
-                platforms: videogame.platforms.map(p => p.platform.name),
+                platforms: videogame.platforms.map(p => p.platform?.name),
                 genres: videogame.genres.map(g => g.name)
             }
             res.send(videogame);

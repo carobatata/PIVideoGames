@@ -18,11 +18,9 @@ function App() {
           <Home/>
         </Route> 
         <Route exact path='/addVideogame'> 
-          <SearchBar />
           <AddVideogame/>
         </Route> 
         <Route path='/:id'> 
-          <SearchBar />
           <VideogameDetail/>
         </Route> 
       </Switch>
