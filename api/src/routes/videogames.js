@@ -50,7 +50,7 @@ async function getAllVideogames() {
             image: v.background_image,
             releaseDate: v.released,
             rating: v.rating,
-            platforms: v.platforms.map(p => p.platform?.name),
+            platforms: v.platforms,
             genres: v.genres.map(g => g.name),
             createdInDb: v.createdInDb
         }})

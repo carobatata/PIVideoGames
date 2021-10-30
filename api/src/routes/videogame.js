@@ -11,8 +11,30 @@ router.get('/:idVideogame', async (req, res, next) => {
         let videogame;
         if(typeof idVideogame === 'string' && idVideogame.length > 7) {
             //es mi id
-            videogame = await Videogame.findByPk(idVideogame);
-            res.send(videogame);
+            // videogame = await Videogame.findByPk(idVideogame);
+
+            videogame = await Videogame.findByPk(idVideogame, {
+                include:[{
+                    model:Genre,
+                    attributes: ['name'],
+                    through: {
+                        attributes: []
+                    }
+                }]
+  
+            });
+  
+            videogame = {
+                    id: videogame.id,
+                    name: videogame.name,
+                    description: videogame.description,
+                    image: videogame.background_image,
+                    releaseDate: videogame.released,
+                    rating: videogame.rating,
+                    platforms: videogame.platforms,
+                    genres: videogame.genres.map(g => g.name),
+                    createdInDb: videogame.createdInDb
+            }
 
         } else {
             //es de la API
@@ -28,8 +50,9 @@ router.get('/:idVideogame', async (req, res, next) => {
                 platforms: videogame.platforms.map(p => p.platform?.name),
                 genres: videogame.genres.map(g => g.name)
             }
-            res.send(videogame);
         }
+        res.send(videogame);
+        
     } catch (error) {
         next(error);
     }
