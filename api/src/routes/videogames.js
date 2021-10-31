@@ -5,6 +5,87 @@ const axios = require('axios');
 const { APIKEY } = process.env;
 const {Op} = require('sequelize');
 
+
+
+router.get('/', async (req, res, next) => {
+    const { name, genre } = req.query;
+
+    let videogamePromiseApi;
+    let videogamePromiseDb;
+    let allVideogames;
+    
+    try {
+        if(name) {
+            videogamePromiseApi = await axios.get(`https://api.rawg.io/api/games?search=${name}&key=${APIKEY}`);
+            videogamePromiseApi = videogamePromiseApi.data.results.map((v) => {
+                return {
+                    id: v.id,
+                    name: v.name,
+                    description: v.description,
+                    image: v.background_image,
+                    releaseDate: v.released,
+                    rating: v.rating,
+                    platforms: v.platforms.map(p => p.platform?.name),
+                    genres: v.genres.map(g => g.name)
+                }})
+
+            videogamePromiseDb = await Videogame.findAll({
+                where: {
+                    name: {
+                        [Op.iLike]: "%" + name + "%"
+                    }
+                },
+                include: [{
+                    model: Genre,
+                    attributes: ['name'],
+                    through: {
+                        attributes: []
+                    }
+                }]
+            });
+
+            videogamePromiseDb = mapVideogameFromDB(videogamePromiseDb)
+
+            allVideogames = [...videogamePromiseDb, ...videogamePromiseApi];
+            allVideogames = allVideogames.slice(0, 15);
+        
+        }
+         else if(genre) {
+
+            videogamePromiseApi = await getAllVideogamesFromApi()
+
+            videogamePromiseApi = videogamePromiseApi.filter((v) => v.genres.includes(genre))
+
+            videogamePromiseDb =  await Videogame.findAll({
+                include: [{
+                    model: Genre,
+                    where: { name: genre },
+                    attributes: ['name'],
+                    through: {
+                        attributes: []
+                    }
+                }]
+            });
+
+            videogamePromiseDb = mapVideogameFromDB(videogamePromiseDb)
+
+            allVideogames = [...videogamePromiseDb, ...videogamePromiseApi];
+         }
+    
+        else {
+            
+            allVideogames = await getAllVideogames();
+           
+        }
+            res.send(allVideogames);
+       
+
+    }
+        catch (error) {
+        next(error);
+    }   
+})
+
 async function getAllVideogamesFromApi() {
     var promises = [
         axios.get(`https://api.rawg.io/api/games?key=${APIKEY}`),
@@ -47,7 +128,7 @@ async function getAllVideogames() {
             id: v.id,
             name: v.name,
             description: v.description,
-            image: v.background_image,
+            image: v.image,
             releaseDate: v.released,
             rating: v.rating,
             platforms: v.platforms,
@@ -62,87 +143,20 @@ async function getAllVideogames() {
 
 }
 
-router.get('/', async (req, res, next) => {
-    const { name, genre } = req.query;
-
-    let videogamePromiseApi;
-    let videogamePromiseDb;
-    let allVideogames;
-    try {
-        if(name) {
-            videogamePromiseApi = await axios.get(`https://api.rawg.io/api/games?search=${name}&key=${APIKEY}`);
-            videogamePromiseApi = videogamePromiseApi.data.results.map((v) => {
-                return {
-                    id: v.id,
-                    name: v.name,
-                    description: v.description,
-                    image: v.background_image,
-                    releaseDate: v.released,
-                    rating: v.rating,
-                    platforms: v.platforms.map(p => p.platform?.name),
-                    genres: v.genres.map(g => g.name)
-                }})
-
-            videogamePromiseDb = await Videogame.findAll({
-                where: {
-                    name: {
-                        [Op.iLike]: "%" + name + "%"
-                    }
-                },
-            });
-
-            allVideogames = [...videogamePromiseDb, ...videogamePromiseApi];
-            allVideogames = allVideogames.slice(0, 15);
-        
-        }
-         else if(genre) {
-
-            videogamePromiseApi = await getAllVideogamesFromApi()
-
-            videogamePromiseApi = videogamePromiseApi.filter((v) => v.genres.includes(genre))
-
-            videogamePromiseDb =  await Videogame.findAll({
-                include: [{
-                    model: Genre,
-                    where: { name: genre },
-                    attributes: ['name'],
-                    through: {
-                        attributes: []
-                    }
-                }]
-            });
-
-            videogamePromiseDb = videogamePromiseDb.map((v) => {
-                return {
-                    id: v.id,
-                    name: v.name,
-                    description: v.description,
-                    image: v.background_image,
-                    releaseDate: v.released,
-                    rating: v.rating,
-                    platforms: v.platforms.map(p => p.platform?.name),
-                    genres: v.genres.map(g => g.name),
-                    createdInDb: v.createdInDb
-                }})
-
-            allVideogames = [...videogamePromiseDb, ...videogamePromiseApi];
-          
-         }
-    
-        else {
-            
-            allVideogames = await getAllVideogames();
-           
-        }
-            res.send(allVideogames);
-       
-
-    }
-        catch (error) {
-        next(error);
-    }   
-})
-
+function mapVideogameFromDB(videogames) {
+    return videogames.map ((v) => {
+        return {
+            id: v.id,
+            name: v.name,
+            description: v.description,
+            image: v.image,
+            releaseDate: v.released,
+            rating: v.rating,
+            platforms: v.platforms.map(p => p.platform?.name),
+            genres: v.genres.map(g => g.name),
+            createdInDb: v.createdInDb
+            }})
+};
 
 
 

@@ -9,7 +9,7 @@ export default function LandingPage () {
             {/* <h1 className={s.title}>Discover all about Videogames!</h1> */}
             <div className={s.button_container}> 
                 <Link to = '/home'>
-                    <button className={s.button}>Take me to the land of Videogames!</button>
+                    <button className={s.button}>Take me to the Land of Videogames!</button>
                 </Link>
             </div>
          </div>

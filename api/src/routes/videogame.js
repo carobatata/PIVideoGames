@@ -28,7 +28,7 @@ router.get('/:idVideogame', async (req, res, next) => {
                     id: videogame.id,
                     name: videogame.name,
                     description: videogame.description,
-                    image: videogame.background_image,
+                    image: videogame.image,
                     releaseDate: videogame.released,
                     rating: videogame.rating,
                     platforms: videogame.platforms,
@@ -60,33 +60,30 @@ router.get('/:idVideogame', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
     const { genres, name, image, description, releaseDate, rating, platforms, createdInDb } = req.body;
+    
+    if(!name || !description || !platforms) return res.status(400).send({error:'Name, description and platforms are required'});
+        
     try {
-    let  newVideogame = await Videogame.create({
-        name,
-        image,
-        description,
-        releaseDate,
-        rating,
-        platforms,
-        createdInDb
-    })
-    let genreDb = await Genre.findAll({
-        where: {name: genres }
-    })
-
-    await newVideogame.addGenres(genreDb);
-    res.send(newVideogame);
- } catch (error) {
-     next(error);
- }
- })
+        let  newVideogame = await Videogame.create({
+            name,
+            image,
+            description,
+            releaseDate,
+            rating,
+            platforms,
+            createdInDb
+        })
+        let genreDb = await Genre.findAll({
+            where: {name: genres }
+        })
+    
+        await newVideogame.addGenres(genreDb);
+            res.send(newVideogame);
+    
+     } catch (error) {
+         next(error);
+     }
+    });
  
 module.exports = router;
 
-// ] GET /videogame/{idVideogame}:
-// Obtener el detalle de un videojuego en particular
-// Debe traer solo los datos pedidos en la ruta de detalle de videojuego
-// Incluir los géneros asociados
-// [ ] POST /videogame:
-// Recibe los datos recolectados desde el formulario controlado de la ruta de creación de videojuego por body
-// Crea un videojuego en la base de datos
