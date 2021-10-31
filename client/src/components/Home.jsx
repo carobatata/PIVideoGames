@@ -10,7 +10,7 @@ export default function Home() {
 
     return (
         <div className={s.container}>
-            <Link to='addVideogame'>
+            <Link to='createVideogame'>
                 <button>CREATE</button>
                 </Link>
 

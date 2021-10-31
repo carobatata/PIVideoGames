@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { getGenres, postVideogame } from '../actions/index';
+import { getGenres, postVideogame } from '../../actions/index';
 import { Link, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import s from  './AddVideogame.module.css';
+import s from  './CreateVideogame.module.css';
 
  
  
@@ -24,7 +24,7 @@ function validate(input) {
  return errors;
 };
  
-export default function AddVideogame() {
+export default function CreateVideogame() {
 
   const platforms = ["Android", "Linux", "Nintendo 3DS", "Nintendo Switch", "PC", "PS Vita", "PlayStation 2", "PlayStation 3", "PlayStation 4", "PlayStation 5", "Web", "Wii U", "Xbox", "Xbox 360", "Xbox One", "Xbox Series S/X", "iOS", "macOS"];
   

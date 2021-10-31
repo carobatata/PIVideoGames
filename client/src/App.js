@@ -3,7 +3,7 @@ import './App.css';
 import Home from './components/Home';
 import SearchBar from './components/SearchBar';
 import VideogameDetail from './components/VideogameDetail';
-import AddVideogame from './components/AddVideogame';
+import CreateVideogame from './components/CreateVideogame/CreateVideogame';
 import LandingPage from './components/LandingPage';
 
 function App() {
@@ -17,8 +17,8 @@ function App() {
          <SearchBar />
           <Home/>
         </Route> 
-        <Route exact path='/addVideogame'> 
-          <AddVideogame/>
+        <Route exact path='/createVideogame'> 
+          <CreateVideogame/>
         </Route> 
         <Route path='/:id'> 
           <VideogameDetail/>
