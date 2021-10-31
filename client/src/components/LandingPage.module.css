@@ -1,7 +1,57 @@
 .landing {
-    background-image: 'https://cdn.dribbble.com/users/1405795/screenshots/10080381/media/ba9508ea0a128e9917a670d90bb821a3.jpg?compress=1&resize=800x600';
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    height: 100vh;
+    background-image: url('https://eldiario.com/wp-content/uploads/2020/09/mario.jpg.webp');
+    background-color: #316B83;
 }
 
+.button_container {
+    display: flex;
+    
+
+}
+
+.button {
+    font-size: 25px;
+    margin-top: 55px;
+    margin-left: 22px;
+    border: 1px solid;
+    border-radius: 8px;
+    background-color: #6D8299;
+    padding: 12px;
+    font-weight: bold;
+    color: #FFF8DC;
+}
+
+
+/* 
+.contenedor {
+    display: flex;
+    background-color: grey;
+    width: 345px;
+    height: 40px;
+    padding-bottom: 6px;
+    padding-left: 2px;
+    padding-right: 2px;
+    justify-content: center;
+    margin: auto;
+}
+
+.btn {
+    color: #0FEB91;
+    border: 1px solid;
+    border-radius: 7px;
+    margin-left: 5px;
+    background-color: grey;
+    border-color: #0FEB91;
+    margin-top: 1.5px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    padding-left: 8px;
+    padding-right: 8px;
+} */
 
 /* background-image:url('../../images/landingbackground.jpg');
 height: 100vh;
@@ -11,3 +61,6 @@ background-position-x: center;
 background-position-y: center;
 background-repeat: no-repeat;
 background-attachment: fixed; */
+
+
+/* 'https://cdn.dribbble.com/users/1405795/screenshots/10080381/media/ba9508ea0a128e9917a670d90bb821a3.jpg?compress=1&resize=800x600' */

@@ -6,10 +6,12 @@ import s from  './LandingPage.module.css';
 export default function LandingPage () {
     return(
          <div className={s.landing}>
-            <h6>Discover everything about VIDEOGAMES!</h6>
-            <Link to = '/home'>
-                <button>Home</button>
-            </Link>
+            {/* <h1 className={s.title}>Discover all about Videogames!</h1> */}
+            <div className={s.button_container}> 
+                <Link to = '/home'>
+                    <button className={s.button}>Take me to the land of Videogames!</button>
+                </Link>
+            </div>
          </div>
     )
 }
