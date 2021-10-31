@@ -8,7 +8,7 @@ export default function Paginado({videogamesPerPage, videogames, paginado}) {
 
     return(
         <nav>
-            <ul>
+            <ul className={s.pages}>
                 {pageNumbers.map(number => (
                     <li className={s.pagina}>
                         <a onClick={() => paginado(number)}>{number}</a>
