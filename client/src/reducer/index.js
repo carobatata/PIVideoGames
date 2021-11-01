@@ -35,7 +35,7 @@ const initialState = {
                 ...state,
             }
         case SORT:
-            let orderedVideogames = [...state.videogames];
+            let orderedVideogames = [...state.filteredVideogames];
             orderedVideogames = orderedVideogames.sort((a, b) => {
                 if(a.name < b.name) {
                     return action.payload === 'ascendente' ? -1 : 1;
@@ -50,7 +50,7 @@ const initialState = {
                 filteredVideogames: orderedVideogames
             }
         case FILTER_CREATED:
-            let allVideogames = [...state.videogames];
+            let allVideogames = [...state.filteredVideogames];
             const filterCreated = action.payload === 'created' ? allVideogames.filter(v => v.createdInDb) : allVideogames.filter(v => !v.createdInDb);
             return{
                 ...state,
@@ -64,7 +64,7 @@ const initialState = {
         //         filteredVideogames: filterGenre
         //     }
         case RATING_SORT:
-            let orderedRatings = [...state.videogames]
+            let orderedRatings = [...state.filteredVideogames]
             orderedRatings = orderedRatings.sort((a, b) => {
                 if(a.rating < b.rating) {
                     return action.payload === 'asc' ? -1 : 1;
