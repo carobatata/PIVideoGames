@@ -3,8 +3,6 @@ import { getGenres, postVideogame } from '../../actions/index';
 import { Link, useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import s from  './CreateVideogame.module.css';
-
- 
  
 function validate(input) {
  let errors = {};
@@ -244,9 +242,9 @@ export default function CreateVideogame() {
                       )}
                   </div>
                 </div>
-
+                
                 <div className={s.buttonSection}>
-                  <input className={s.button2} type="submit" value="CREATE" />
+                  <input className={s.button2} type="submit" value="CREATE" disabled={!Object.keys(errors).length === 0} />
                 </div>
          
       

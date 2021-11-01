@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getVideogames } from '../actions/index.js';
-import Videogame from './Videogame';
-import Paginado from './Paginado.jsx';
+import { getVideogames } from '../../actions/index.js';
+import Videogame from '../Videogame/Videogame';
+import Paginado from '../Paginado/Paginado.jsx';
 import s from  './Videogames.module.css';
 
 export default function Videogames() {
@@ -35,8 +35,10 @@ export default function Videogames() {
         <div className={s.container}>
             <button className={s.button} onClick={e=> {handleClick(e)}}>Reset Videogames</button>
 
-            <div className={s.flexItem}>
-            {currentVideogames?.map((videogame) => {
+            
+            {currentVideogames.length > 0 ? 
+            <div className={s.flexItem}> 
+            {currentVideogames.map((videogame) => {
                 return <Videogame 
                     id={videogame.id}
                     image={videogame.image} 
@@ -44,9 +46,15 @@ export default function Videogames() {
                     genres={videogame.genres}
                     rating={videogame.rating}
                 />
-            })} 
+            })}     
+            </div>   
+            : 
+                <div className={s.novideogame}>
+                    <h1 >Sorry! No Videogames match your search </h1> 
+                    <img className={s.photo} src="https://preview.redd.it/zqqvyy6rtll61.png?auto=webp&s=c0893407ab92d129cba70a606e9e64b5afe014e7" alt="SadMarioBross" />
+                </div>
+                } 
             
-            </div>
 
             <div className={s.paginado}>
              <Paginado

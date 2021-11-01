@@ -1,18 +1,18 @@
 .flexcontainer {
     display: flex;
     flex-direction: column;
-    height: 20rem;
+    height: 21rem;
     border: 4px solid #316B83;
     border-radius: 6px;
-    width: 17rem;
+    width: 18rem;
     margin: 0.5rem;
     /* background-color: #D5BFBF; */
 }
 
 .title {
     font-weight: bold;
-    padding-top: 0.4rem;
-    padding-bottom: 0.4rem;
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
     font-size: larger;
     color: #E6E6E6;
 }
@@ -31,20 +31,25 @@
 }
 
 .rating {
-    border: 2px solid #316B83;
+    /* border: 2px solid #316B83; */
     border-radius: 5px;
     width: 2rem;
     display: flex;
     align-self: center;
     padding: 0.2rem;
-    color: #E6E6E6;
+    color: #316B83;
+    background-color:#E6E6E6;
+    font-size: 12px;
+    justify-content: center;
+    font-weight: 600
 }
 
 .divlink {
     padding: 0.6rem;
+    margin-top: 0.2rem;
 }
 
-.divlink {
+.link {
     color: #E6E6E6;
 }
 

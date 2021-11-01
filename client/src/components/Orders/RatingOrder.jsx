@@ -12,8 +12,8 @@ export default function RatingOrder() {
     
     return(
         <select className={s.select} name='Rating Order' onChange={handleSelectChange}>
-            <option value='asc'>Lowest to Best Ranking</option>
-            <option value='desc'>Best to Lowest Ranking</option>
+            <option value='asc'>Lowest to Best Rating</option>
+            <option value='desc'>Best to Lowest Rating</option>
         </select>
     )
 };

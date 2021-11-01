@@ -1,9 +1,9 @@
 import { Route, Switch } from 'react-router';
 import './App.css';
-import Home from './components/Home';
-import VideogameDetail from './components/VideogameDetail';
+import Home from './components/Home/Home';
+import VideogameDetail from './components/VideogameDetail/VideogameDetail';
 import CreateVideogame from './components/CreateVideogame/CreateVideogame';
-import LandingPage from './components/LandingPage';
+import LandingPage from './components/Landing/LandingPage';
 
 function App() {
   return (
