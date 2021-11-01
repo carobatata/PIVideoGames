@@ -121,16 +121,18 @@ export default function CreateVideogame() {
         
           return (
                 
-          <div>
+          <div className={s.container}>
             <Link to='/home'>
-              <button>Home</button>
+              <button className={s.button}>Home</button>
             </Link>
       
-            <h5>Create your Videogame</h5>
       
-            <div className={s.flexContainer}>
+            <div className={s.formcontainer}>
+
             <form className={s.form} onSubmit={handleSubmit}>
 
+                <h2>Create your Videogame</h2>
+          
                 <div className={s.formSection}>
                   <input
                     className={s.formInput}
@@ -141,7 +143,7 @@ export default function CreateVideogame() {
                     onChange={handleChange}
                     />
                     {errors.name && (
-                      <p>{errors.name}</p>
+                      <p className={s.error}>{errors.name}</p>
                     )}
                 </div>
 
@@ -165,7 +167,7 @@ export default function CreateVideogame() {
                     value={videogame.realeseDate}
                     onChange={handleChange} />
                     {errors.realeseDate && (
-                    <p>{errors.realeseDate}</p>
+                    <p className={s.error}>{errors.realeseDate}</p>
                   )}
                 </div>
 
@@ -178,7 +180,7 @@ export default function CreateVideogame() {
                     onChange={handleChange}>
                   </textarea>
                   {errors.description && (
-                      <p>{errors.description}</p>
+                      <p className={s.error}>{errors.description}</p>
                       )}
                 </div>     
     
@@ -187,31 +189,34 @@ export default function CreateVideogame() {
                     className={s.formInput}
                     type='number'
                     name='rating'
-                    placeholder= 'Rating'
+                    min= '1'
+                    max='5'
+                    placeholder= '1-5'
                     value={videogame.rating}
                     onChange={handleChange} />
                     {errors.rating && (
-                    <p>{errors.rating}</p>
+                    <p className={s.error}>{errors.rating}</p>
                   )}
                 </div>
       
                 <div className={s.formSection}>
                   <div className={s.genrePlatforms}>
-                    <label>Genres:</label>
-                    <select onChange={handleSelect}>
+                    {/* <label>Genres:</label> */}
+                    <select className={s.select} onChange={handleSelect}>
+                    <option value="" selected disabled hidden>Choose at least one Genre</option>
                         {genres.map((g) => (
                           <option value={g.name}>{g.name}</option>
                         ))}
                     </select>
 
                     {errors.genres && (
-                      <p>{errors.genres}</p>
+                      <p className={s.error}>{errors.genres}</p>
                       )}
 
                       {videogame.genres.map(g =>
-                        <div key={g}>
-                          <p>{g}</p>
-                          <input type="button" value='X' onClick={()=> handleDeleteGenre(g)} /> 
+                        <div  key={g}>
+                          <p className={s.choices}>{g}</p>
+                          <input className={s.buttonDelete} type="button" value='X' onClick={()=> handleDeleteGenre(g)} /> 
                         </div>
                         )}
                   </div>
@@ -219,33 +224,33 @@ export default function CreateVideogame() {
 
                 <div className={s.formSection}>
                   <div className={s.genrePlatforms}>
-                    <label>Platforms</label>
-                    <select onChange={handleSelectPlatforms}>
+                    {/* <label>Platforms</label> */}
+                    <select className={s.select} onChange={handleSelectPlatforms}>
+                    <option value="" selected disabled hidden>Choose at least one Platform</option>
                         {platforms.map((p) => (
                           <option value={p}>{p}</option>
                         ))}
                     </select>
                     {errors.platforms && (
-                      <p>{errors.platforms}</p>
+                      <p className={s.error}>{errors.platforms}</p>
                       )}
+
                     {videogame.platforms.map(p =>
                       <div key={p}>
-                        <p>{p}</p>
-                        <input type="button" value='X' onClick={() => handleDeletePlatform(p)} />
+                        <p className={s.choices}>{p}</p>
+                        <input className={s.buttonDelete} type="button" value='X' onClick={() => handleDeletePlatform(p)} />
                       </div>
                       )}
                   </div>
                 </div>
 
-                <div className={s.formSection}>
-                  <input type="submit" value="CREATE" />
+                <div className={s.buttonSection}>
+                  <input className={s.button2} type="submit" value="CREATE" />
                 </div>
+         
       
             </form>
       
-          <div class={s.formImage}>
-            <img class={s.image} src='https://cdn.dribbble.com/users/46743/screenshots/6357861/cs19_mascot-01_4x.jpg?compress=1&resize=1200x900' alt="Image not found"/>
-          </div>
             </div>
 
       
@@ -253,3 +258,6 @@ export default function CreateVideogame() {
         )
   
 }
+                {/* <div class={s.formImage}>
+                  <img class={s.image} src='https://cdn.dribbble.com/users/46743/screenshots/6357861/cs19_mascot-01_4x.jpg?compress=1&resize=1200x900' alt="Image not found"/>
+                </div> */}
