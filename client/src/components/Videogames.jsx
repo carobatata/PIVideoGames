@@ -33,7 +33,7 @@ export default function Videogames() {
 
     return (
         <div className={s.container}>
-            <button onClick={e=> {handleClick(e)}}>Reset Videogames</button>
+            <button className={s.button} onClick={e=> {handleClick(e)}}>Reset Videogames</button>
 
             <div className={s.flexItem}>
             {currentVideogames?.map((videogame) => {

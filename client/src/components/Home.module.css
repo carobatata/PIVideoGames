@@ -1,0 +1,36 @@
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #D5BFBF;
+    border: 2px solid #8CA1A5;
+    padding: 15px;
+}
+
+.title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #316B83;
+    font-style: italic;
+}
+
+.button {
+    border-radius: 6px;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    border: 2.5px solid #316B83;
+    background-color: #D5BFBF;
+    color: #316B83;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.filterorder {
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem;
+}
+

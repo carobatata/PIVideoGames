@@ -1,7 +1,6 @@
 import { Route, Switch } from 'react-router';
 import './App.css';
 import Home from './components/Home';
-import SearchBar from './components/SearchBar';
 import VideogameDetail from './components/VideogameDetail';
 import CreateVideogame from './components/CreateVideogame/CreateVideogame';
 import LandingPage from './components/LandingPage';
@@ -14,7 +13,6 @@ function App() {
           <LandingPage/>
         </Route> 
         <Route exact path='/home'> 
-         <SearchBar />
           <Home/>
         </Route> 
         <Route exact path='/createVideogame'> 

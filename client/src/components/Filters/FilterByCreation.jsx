@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { filterCreated} from '../../actions/index.js';
+import s from  './FilterByCreation.module.css';
 
 export default function FilterByCreation() {
     
@@ -11,7 +12,7 @@ export default function FilterByCreation() {
     };
     
     return(
-        <select name='Creation Order' onChange={ e => handleFilterCreated(e)}>
+        <select className={s.select} name='Creation Order' onChange={ e => handleFilterCreated(e)}>
             <option value='all'>All</option>
             <option value='created'>Created by Me</option>
             <option value='api'>Already Existed</option>

@@ -1,0 +1,39 @@
+.container {
+    border-radius: 6px;
+    background-color: #316B83;
+    padding-bottom: 3px;
+    padding-top: 3px;
+    padding-right: 5px;
+    padding-left: 5px;
+
+}
+
+.searchbar {
+    border-radius: 6px;
+    border: 2.5px solid #316B83;
+    margin-right: 1px;
+    background: #D5BFBF;
+    
+
+}
+
+.button {
+    border-radius: 6px;
+    border: 2.5px solid #316B83;
+    background: #D5BFBF;
+    color: #316B83;
+    font-weight: 600;
+  
+    /* padding-right: 15px;
+    padding-left: 15px;
+    padding-top: 9px;
+    padding-bottom: 9px; */
+    /* border: 2.5px solid #316B83; */
+    /* background-color: #D5BFBF;
+    color: #316B83;
+    font-size: 14px;
+    font-weight: 600; */
+
+}
+
+ 

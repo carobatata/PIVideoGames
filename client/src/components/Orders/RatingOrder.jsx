@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { ratingSort } from '../../actions/index.js';
+import s from  './RatingOrder.module.css';
 
 export default function RatingOrder() {
     
@@ -10,7 +11,7 @@ export default function RatingOrder() {
     }
     
     return(
-        <select name='Rating Order' onChange={handleSelectChange}>
+        <select className={s.select} name='Rating Order' onChange={handleSelectChange}>
             <option value='asc'>Lowest to Best Ranking</option>
             <option value='desc'>Best to Lowest Ranking</option>
         </select>

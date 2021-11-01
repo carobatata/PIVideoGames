@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { sort } from '../../actions/index.js';
+import s from  './AlphabeticalOrder.module.css';
 
 export default function AlphabeticalOrder() {
     
@@ -10,7 +11,7 @@ export default function AlphabeticalOrder() {
     }
     
     return(
-        <select name="Alphabetical Order" onChange={handleSelectChange}>
+        <select className={s.select} name="Alphabetical Order" onChange={handleSelectChange}>
             <option value='ascendente'>A-Z</option>
             <option value='descendente'>Z-A</option>
         </select>

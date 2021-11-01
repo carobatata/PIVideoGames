@@ -2,6 +2,8 @@ import { useDispatch } from 'react-redux';
 import { filterGenre, getGenres } from '../../actions';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import s from  './FilterByGenre.module.css';
+
 
 export default function FilterByGenre() {
 
@@ -21,14 +23,12 @@ export default function FilterByGenre() {
 
     return(
         <div>
-        <label>Filter by Genre</label>
-
-        <select name="Genre Filter" onChange={handleSelectChange}>
-            <option></option>
-            {genres.map((g) =>(
-                <option value={g.name}>{g.name}</option>
-              ))}
-        </select>
+            <select className={s.select} name="Genre Filter" onChange={handleSelectChange}>
+                <option>Genres</option>
+                {genres.map((g) =>(
+                    <option value={g.name}>{g.name}</option>
+                ))}
+            </select>
      </div>
     )
 };
