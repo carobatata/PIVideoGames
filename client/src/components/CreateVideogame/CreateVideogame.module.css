@@ -36,14 +36,27 @@
         padding: 4px;
     }
 
+    .textarea {
+        margin: 1rem;
+        border-radius: 4px;
+        background-color: #E6E6E6;
+        color: #316B83;
+        padding-left: 4px;
+        padding-right: 4px;
+        padding-bottom: 4rem;
+        padding-top: 4px;
+    }
+
     .genrePlatforms {
         margin: 1rem;
+        padding: 4px;
     }
     
     .select {
         background-color: #E6E6E6;
         color: #316B83;
-        padding:2px;
+        padding:4px;
+        border-radius: 4px;
     }
 
     .button {

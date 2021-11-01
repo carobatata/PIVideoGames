@@ -173,9 +173,10 @@ export default function CreateVideogame() {
 
                 <div className={s.formSection}>
                   <textarea
-                    className={s.formInput}
+                    className={s.textarea}
                     name= 'description'
                     placeholder= 'Description'
+                    maxlength="200"
                     value= {videogame.description}
                     onChange={handleChange}>
                   </textarea>
