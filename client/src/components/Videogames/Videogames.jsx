@@ -50,7 +50,7 @@ export default function Videogames() {
             </div>   
             : 
                 <div className={s.novideogame}>
-                    <h1 >Sorry! No Videogames match your search </h1> 
+                    <h1 >Sorry! No Videogames match your search. </h1> 
                     <img className={s.photo} src="https://preview.redd.it/zqqvyy6rtll61.png?auto=webp&s=c0893407ab92d129cba70a606e9e64b5afe014e7" alt="SadMarioBross" />
                 </div>
                 } 
