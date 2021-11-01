@@ -32,10 +32,24 @@ export default function VideogameDetail() {
                             <span className={s.bold}>Release Date: </span>
                             <span>{videogame.releaseDate}</span>
                         </div>
-                        <div dangerouslySetInnerHTML={{__html: videogame.description}}></div>
-                        <h6>Rating: {videogame.rating}</h6>
-                        <p>{videogame.platforms}</p> 
-                        <p>{videogame.genres}</p>
+
+                        <div className={s.genres}>
+                        {videogame.genres.map(genre => <span className={s.genre} key={genre} >{genre}</span>)}
+                       </div>
+
+                        <div>
+                            <span className={s.bold}>Rating: </span>
+                            <span>{videogame.rating}</span>
+                        </div>
+
+
+                        <div className={s.description} dangerouslySetInnerHTML={{__html: videogame.description}}></div>
+
+                       <div className={s.platforms}>
+                        {videogame.platforms.map(platform => <span className={s.platform} key={platform} >{platform}</span>)}
+                       </div>
+
+
                     </div>
                 </div>
             )

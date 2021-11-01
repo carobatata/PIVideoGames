@@ -1,21 +1,22 @@
 .container {
-    display: flex;
     color: #316B83;
+    margin: 2rem;
 }
 
 .button {
+    display: flex;
     margin-top: 2rem;
-    margin-left: 3rem;
     border-radius: 5px;
-    padding: 9px;
+    padding: 10px;
     border: 3px solid #316B83;
     color: #316B83;
     font-weight: 600;
     background-color: #8CA1A5;
+    font-size: 16px;
 }
 
 .title {
-    padding-top: 5rem;
+    padding-top: 2rem;
     padding-bottom: 0.2rem;
 }
 
@@ -27,4 +28,54 @@
 
 .bold {
     font-weight: 600;
+}
+
+.description {
+    font-style: italic;
+    margin-left: 3rem;
+    margin-right: 3rem;
+    margin-top: 1rem;
+}
+
+.genres {
+    display: flex;
+    margin-right: 1rem;
+    margin-left: 1rem;
+    justify-content: center;
+}
+
+.genre {
+    border-radius: 6px;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    border: 2.5px solid #316B83;
+    background-color:#E6E6E6;
+    color: #316B83;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    margin-right: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.platforms {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 1rem;
+}
+
+.platform {
+    border-radius: 6px;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    border: 2.5px solid #316B83;
+    background-color:#316B83;
+    color: #E6E6E6;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 4px;
 }

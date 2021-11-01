@@ -14,7 +14,7 @@
     padding-top: 0.4rem;
     padding-bottom: 0.4rem;
     font-size: larger;
-    color: #316B83;
+    color: #E6E6E6;
 }
 
 .image {
@@ -27,7 +27,7 @@
     justify-content: space-around;
     padding: 0.6rem;
     padding-bottom: 0.8rem;
-    color: #316B83;
+    color: #E6E6E6;
 }
 
 .rating {
@@ -37,16 +37,15 @@
     display: flex;
     align-self: center;
     padding: 0.2rem;
-    color: #316B83;
+    color: #E6E6E6;
 }
 
 .divlink {
     padding: 0.6rem;
-    background-color: #8CA1A5 ;
 }
 
 .divlink {
-    color: #316B83;
+    color: #E6E6E6;
 }
 
 /* <div className={s.flexContainer}>
