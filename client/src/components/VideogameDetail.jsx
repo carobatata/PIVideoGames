@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
+import s from  './VideogameDetail.module.css';
+
 
 export default function VideogameDetail() {
     const [videogame, setVideogame] = useState();
@@ -19,14 +21,17 @@ export default function VideogameDetail() {
     
     if(videogame) {
             return(
-                <div>
+                <div className={s.container}>
                     <Link to='/home'>
-                        <button>Home</button>
+                        <button className={s.button}>Home</button>
                     </Link>
                     <div>
-                        <h3>{videogame.name}</h3>
-                        <img src={videogame.image} alt="VideogameImage" />
-                        <h5>{videogame.releaseDate}</h5>
+                        <h1 className={s.title}>{videogame.name}</h1>
+                        <img className={s.image} src={videogame.image} alt="VideogameImage" />
+                        <div>
+                            <span className={s.bold}>Release Date: </span>
+                            <span>{videogame.releaseDate}</span>
+                        </div>
                         <div dangerouslySetInnerHTML={{__html: videogame.description}}></div>
                         <h6>Rating: {videogame.rating}</h6>
                         <p>{videogame.platforms}</p> 
