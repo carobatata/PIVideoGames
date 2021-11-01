@@ -202,7 +202,7 @@ export default function CreateVideogame() {
                   <div className={s.genrePlatforms}>
                     {/* <label>Genres:</label> */}
                     <select className={s.select} onChange={handleSelect}>
-                    <option value="" selected disabled hidden>Choose at least one Genre</option>
+                    <option value="none" selected disabled hidden>Choose at least one Genre</option>
                         {genres.map((g) => (
                           <option value={g.name}>{g.name}</option>
                         ))}
@@ -225,7 +225,7 @@ export default function CreateVideogame() {
                   <div className={s.genrePlatforms}>
                     {/* <label>Platforms</label> */}
                     <select className={s.select} onChange={handleSelectPlatforms}>
-                    <option value="" selected disabled hidden>Choose at least one Platform</option>
+                    <option value="none" selected disabled hidden>Choose at least one Platform</option>
                         {platforms.map((p) => (
                           <option value={p}>{p}</option>
                         ))}
@@ -257,6 +257,4 @@ export default function CreateVideogame() {
         )
   
 }
-                {/* <div class={s.formImage}>
-                  <img class={s.image} src='https://cdn.dribbble.com/users/46743/screenshots/6357861/cs19_mascot-01_4x.jpg?compress=1&resize=1200x900' alt="Image not found"/>
-                </div> */}
+            

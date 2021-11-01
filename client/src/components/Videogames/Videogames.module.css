@@ -12,13 +12,19 @@
 }
 
 .button {
-    border-radius: 5px;
-    padding: 8px;
-    border: 3px solid #316B83;
-    color: #E6E6E6;
+    display: flex;
+    border-radius: 6px;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    border: 2.5px solid #316B83;
+    background-color: #E6E6E6;
+    color: #316B83;
+    font-size: 14px;
     font-weight: 600;
-    background-color: #2C394B;
-    margin-bottom: 2rem; 
+    margin-top: 0.1rem;
+    margin-bottom: 1rem;
 }
 
 .novideogame {

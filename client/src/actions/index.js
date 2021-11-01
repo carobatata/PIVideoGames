@@ -2,7 +2,7 @@
   export const GET_VIDEOGAMES = 'GET_VIDEOGAMES';
   export const SEARCH_VIDEOGAME = 'SEARCH_VIDEOGAME';
   export const FILTER_CREATED = 'FILTER_CREATED';
-  export const SORT = 'SORT';
+  export const ALPHABETICAL_SORT = 'ALPHABETICAL_SORT';
   export const GET_GENRES = 'GET_GENRES';
   export const RATING_SORT = 'RATING_SORT';
   export const POST_VIDEOGAME = 'POST_VIDEOGAME';
@@ -64,9 +64,9 @@ export function getGenres() {
     }
 }
 
-export function sort(payload) {
+export function alphabeticalSort(payload) {
     return {
-        type: SORT,
+        type: ALPHABETICAL_SORT,
         payload,
     }
 }

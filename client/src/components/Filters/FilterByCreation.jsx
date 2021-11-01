@@ -13,9 +13,9 @@ export default function FilterByCreation() {
     
     return(
         <select className={s.select} name='Creation Order' onChange={ e => handleFilterCreated(e)}>
-            <option value='all'>All</option>
-            <option value='created'>Created by Me</option>
-            <option value='api'>Already Existed</option>
+            <option value='all'>API or DB</option>
+            <option value='created'>From Database</option>
+            <option value='api'>From RAWG API</option>
         </select>
     )
 };

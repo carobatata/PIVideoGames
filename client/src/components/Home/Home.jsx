@@ -6,7 +6,9 @@ import Order from '../Orders/Order';
 import SearchBar from '../SearchBar/SearchBar';
 import s from  './Home.module.css';
 
+
 export default function Home() {
+
     return (
         <div className={s.container}>
            <div className={s.navbar}>

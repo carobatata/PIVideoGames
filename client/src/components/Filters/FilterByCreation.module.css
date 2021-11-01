@@ -1,11 +1,16 @@
+
 .select {
     border-radius: 5px;
-    padding: 6px;
+    padding-right: 25px;
+    padding-bottom: 8px;
+    padding-top: 8px;
+    padding-left: 10px;
     border: 3px solid #316B83;
     color: #E6E6E6;
     font-weight: 600;
     background-color: #2C394B;
     margin-left: 2rem;
     margin-right: 2rem;
+    margin-top: 0.1rem;
 }
 

@@ -1,4 +1,4 @@
-import { FILTER_CREATED, GET_VIDEOGAMES, SEARCH_VIDEOGAME, SORT, GET_GENRES, FILTER_GENRE, RATING_SORT, POST_VIDEOGAME } from '../actions';
+import { FILTER_CREATED, GET_VIDEOGAMES, SEARCH_VIDEOGAME, ALPHABETICAL_SORT, GET_GENRES, FILTER_GENRE, RATING_SORT, POST_VIDEOGAME } from '../actions';
 
 const initialState = {
     videogames : [],
@@ -27,14 +27,13 @@ const initialState = {
         case GET_GENRES:
             return {
                 ...state,
-                genres:
-                 action.payload
+                genres: action.payload
             }
         case POST_VIDEOGAME:
             return{
                 ...state,
             }
-        case SORT:
+        case ALPHABETICAL_SORT:
             let orderedVideogames = [...state.filteredVideogames];
             orderedVideogames = orderedVideogames.sort((a, b) => {
                 if(a.name < b.name) {
@@ -56,13 +55,6 @@ const initialState = {
                 ...state,
                 filteredVideogames: action.payload === 'all'? state.allVideogames: filterCreated
             }
-        // case FILTER_GENRE:
-        //     let allTheVideogames = [...state.videogames];
-        //     let filterGenre = allTheVideogames.filter(v => v.genres === action.payload);
-        //     return {
-        //         ...state,
-        //         filteredVideogames: filterGenre
-        //     }
         case RATING_SORT:
             let orderedRatings = [...state.filteredVideogames]
             orderedRatings = orderedRatings.sort((a, b) => {
