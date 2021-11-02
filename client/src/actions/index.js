@@ -7,6 +7,8 @@
   export const RATING_SORT = 'RATING_SORT';
   export const POST_VIDEOGAME = 'POST_VIDEOGAME';
   export const FILTER_GENRE = 'FILTER_GENRE';
+//   export const GET_DETAIL = 'GET_DETAIL';
+
 
   export function getVideogames(){
       return function(dispatch){
@@ -88,11 +90,31 @@ export function ratingSort(payload) {
 
 export function postVideogame(payload) {
     return async function (dispatch) {
-        const response = await axios.post('http://localhost:3001/videogame', payload);
-        console.log(response);
-        return dispatch ({
-            type: POST_VIDEOGAME,
-            payload: response
-        })
+        try {
+            const response = await axios.post('http://localhost:3001/videogame', payload);
+            console.log(response);
+            return dispatch ({
+                type: POST_VIDEOGAME,
+                payload: response
+            })
+        } catch (error) {
+            console.log(error)
+        }
     }
 };
+
+
+
+// export function getDetail(id) {
+//     return async function(dispatch) {
+//         try {
+//             const response = await axios.get(`http://localhost:3001/videogame/${id}`)
+//             return dispatch({
+//                 type: 'GET_DETAIL',
+//                 payload: response.data
+//             })
+//         } catch (error) {
+//             console.log(error)
+//         }
+//     }
+// };

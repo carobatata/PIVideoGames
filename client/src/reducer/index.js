@@ -4,6 +4,7 @@ const initialState = {
     videogames : [],
     filteredVideogames: [],
     genres: [],
+    detail: []
   };
 
   export default function reducer(state = initialState, action) {
@@ -70,8 +71,12 @@ const initialState = {
                 ...state,
                 filteredVideogames: filterCreated
                 // filteredVideogames: action.payload === 'all'? state.allVideogames: filterCreated
-
-                }
+            }
+                // case GET_DETAIL:
+                //     return{
+                //         ...state,
+                //         detail: action.payload
+                //     }
         default:
             return state;
       }  

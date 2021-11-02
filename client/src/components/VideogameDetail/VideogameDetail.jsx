@@ -4,7 +4,6 @@ import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import s from  './VideogameDetail.module.css';
 
-
 export default function VideogameDetail() {
     const [videogame, setVideogame] = useState();
     let { id } = useParams();
@@ -46,12 +45,10 @@ export default function VideogameDetail() {
                        <div className={s.platforms}>
                         {videogame.platforms.map(platform => <span className={s.platform} key={platform} >{platform}</span>)}
                        </div>
-
-
                     </div>
                 </div>
             )
         } else {
-            return <h4>Videogame does not exist</h4>
+            return <h4>Loading</h4>
             }
 };
