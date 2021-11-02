@@ -12,10 +12,11 @@ export default function FilterByCreation() {
     };
     
     return(
-        <select className={s.select} name='Creation Order' onChange={ e => handleFilterCreated(e)}>
-            <option value="none" selected disabled hidden>API or DB</option>
+        <select className={s.select} name='Creation Order' onChange={ e => handleFilterCreated(e)} defaultValue={'DEFAULT'}>
+            <option value='DEFAULT' disabled>API or DB</option>
             <option value='created'>From Database</option>
             <option value='api'>From RAWG API</option>
         </select>
     )
 };
+

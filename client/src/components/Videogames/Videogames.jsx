@@ -17,7 +17,7 @@ export default function Videogames() {
     }, [dispatch])
 
     const [currentPage, setCurrentPage] = useState(1); //useState es estado local. empiezo en pagina 1
-    const [videogamesPerPage, setVideogamesPerPage] = useState(15);
+    const [videogamesPerPage] = useState(15);
     const indexLastVideogame = currentPage * videogamesPerPage;
     const indexFirstVideogame = indexLastVideogame - videogamesPerPage;
     const currentVideogames = videogames.slice(indexFirstVideogame, indexLastVideogame);
@@ -45,6 +45,7 @@ export default function Videogames() {
                     name={videogame.name}
                     genres={videogame.genres}
                     rating={videogame.rating}
+                    key={videogame.id}
                 />
             })}     
             </div>   

@@ -115,8 +115,8 @@ export default function CreateVideogame() {
           return (
                 
           <div className={s.container}>
-            <Link to='/home'>
-              <button className={s.button}>Home</button>
+            <Link to='/home' className={s.link}>
+              <button className={s.button} >Home</button>
             </Link>
       
       
@@ -187,7 +187,8 @@ export default function CreateVideogame() {
                     max='5'
                     placeholder= '1-5'
                     value={videogame.rating}
-                    onChange={handleChange} />
+                    onChange={handleChange}
+                    required />
                     {errors.rating && (
                     <p className={s.error}>{errors.rating}</p>
                   )}
@@ -195,10 +196,10 @@ export default function CreateVideogame() {
       
                 <div className={s.formSection}>
                   <div className={s.genrePlatforms}>
-                    <select className={s.select} onChange={handleSelect}>
-                    <option value="none" selected disabled hidden>Choose at least one Genre</option>
+                    <select className={s.select} onChange={handleSelect} defaultValue={'DEFAULT'}>
+                    <option value="DEFAULT" disabled>Choose at least one Genre</option>
                         {genres.map((g) => (
-                          <option value={g.name}>{g.name}</option>
+                          <option value={g.name} key={g.id}>{g.name}</option>
                         ))}
                     </select>
 
@@ -217,10 +218,10 @@ export default function CreateVideogame() {
 
                 <div className={s.formSection}>
                   <div className={s.genrePlatforms}>
-                    <select className={s.select} onChange={handleSelectPlatforms}>
-                    <option value="none" selected disabled hidden>Choose at least one Platform</option>
+                    <select className={s.select} onChange={handleSelectPlatforms} defaultValue={'DEFAULT'}>
+                    <option value="DEFAULT" disabled>Choose at least one Platform</option>
                         {platforms.map((p) => (
-                          <option value={p}>{p}</option>
+                          <option key={p.id} value={p}>{p}</option>
                         ))}
                     </select>
                     {errors.platforms && (

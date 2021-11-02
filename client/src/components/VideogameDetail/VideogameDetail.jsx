@@ -13,12 +13,12 @@ export default function VideogameDetail() {
         .then((response) => {
             setVideogame(response.data)
         })
-    }, [])
-    
+    }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
     if(videogame) {
             return(
                 <div className={s.container}>
-                    <Link to='/home'>
+                    <Link to='/home' className={s.link}>
                         <button className={s.button}>Home</button>
                     </Link>
                     <div>
@@ -49,6 +49,6 @@ export default function VideogameDetail() {
                 </div>
             )
         } else {
-            return <h4>Loading</h4>
+            return <h4>Loading...</h4>
             }
 };

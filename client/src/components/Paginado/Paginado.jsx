@@ -10,7 +10,7 @@ export default function Paginado({videogamesPerPage, videogames, paginado}) {
         <nav>
             <ul className={s.pages}>
                 {pageNumbers.map(number => (
-                    <li >
+                    <li key={number}>
                         <button className={s.pagina} onClick={() => paginado(number)}>{number}</button>
                     </li>
                 ))}

@@ -27,6 +27,8 @@
     border-radius: 6px;
     }
 
+
+
     .formInput {
         margin: 1rem;
         border-radius: 4px;
@@ -69,6 +71,10 @@
         background-color: #8CA1A5;
         font-size: 16px;
         margin-left: 2rem;
+    }
+    
+    .link {
+        text-decoration: none;
     }
     
     .button2 {

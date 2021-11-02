@@ -23,8 +23,8 @@ export default function FilterByGenre() {
 
     return(
         <div>
-            <select className={s.select} name="Genre Filter" onChange={handleSelectChange}>
-             <option value="none" selected disabled hidden>Genre</option>
+            <select className={s.select} name="Genre Filter" onChange={handleSelectChange} defaultValue={'DEFAULT'}>
+             <option value='DEFAULT' disabled>Genre</option>
                 {genres.map((g) =>(
                     <option key={g.id} value={g.name}>{g.name}</option>
                 ))}
@@ -32,3 +32,4 @@ export default function FilterByGenre() {
      </div>
     )
 };
+
