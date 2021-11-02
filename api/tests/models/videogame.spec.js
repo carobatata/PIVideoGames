@@ -26,6 +26,19 @@ describe('Videogame model', () => {
           .catch(() => done());
       });
     });
-    
+    describe('description', () => {
+      it('should throw an error if description is null', (done) => {
+        Videogame.create({...validParams, description: null})
+          .then(() => done(new Error('It requires a valid description')))
+          .catch(() => done());
+      });
+    });
+    describe('platforms', () => {
+      it('should throw an error if platforms are null', (done) => {
+        Videogame.create({...validParams, platforms: null})
+          .then(() => done(new Error('It requires valid platforms')))
+          .catch(() => done());
+      });
+    });
   });
 });
