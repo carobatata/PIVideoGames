@@ -26,7 +26,7 @@ export default function FilterByGenre() {
             <select className={s.select} name="Genre Filter" onChange={handleSelectChange}>
              <option value="none" selected disabled hidden>Genre</option>
                 {genres.map((g) =>(
-                    <option value={g.name}>{g.name}</option>
+                    <option key={g.id} value={g.name}>{g.name}</option>
                 ))}
             </select>
      </div>

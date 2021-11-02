@@ -7,7 +7,7 @@
 .flexItem {
     display: grid;
     grid-template-rows: 350px 350px 350px;
-    grid-template-columns: 350px 350px 350px;
+    grid-template-columns: 320px 320px 320px;
     grid-gap: 3px;
 }
 

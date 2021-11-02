@@ -12,9 +12,6 @@ export default function VideogameDetail() {
     useEffect(() => {
         axios.get(`http://localhost:3001/videogame/${id}`)
         .then((response) => {
-            const { description } = response.data;
-            // const parser = new DOMParser();
-            // const htmlDoc = parser.parseFromString(description, 'text/html');
             setVideogame(response.data)
         })
     }, [])
@@ -27,15 +24,16 @@ export default function VideogameDetail() {
                     </Link>
                     <div>
                         <h1 className={s.title}>{videogame.name}</h1>
+
+                        <div className={s.genres}>
+                        {videogame.genres.map(genre => <span className={s.genre} key={genre} >{genre}</span>)}
+                       </div>
+                       
                         <img className={s.image} src={videogame.image} alt="VideogameImage" />
                         <div>
                             <span className={s.bold}>Release Date: </span>
                             <span>{videogame.releaseDate}</span>
                         </div>
-
-                        <div className={s.genres}>
-                        {videogame.genres.map(genre => <span className={s.genre} key={genre} >{genre}</span>)}
-                       </div>
 
                         <div>
                             <span className={s.bold}>Rating: </span>

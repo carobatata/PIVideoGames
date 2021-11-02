@@ -12,19 +12,18 @@
 .form {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;    
     flex-direction: column;
     border-radius: 5px;
-    padding-left: 3rem;
-    padding-right: 3rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
     padding-top: 2px;
     padding-bottom: 4px;
-    border: 3px solid #316B83;
+    border: 3px solid #E6E6E6;
     color: #E6E6E6;
     font-weight: 600;
     background-color: #316B83;
     margin-top: 2rem;
-    margin-left: 2rem;
-    margin-right: 2rem;
     border-radius: 6px;
     }
 
@@ -33,7 +32,7 @@
         border-radius: 4px;
         background-color: #E6E6E6;
         color: #316B83;
-        padding: 4px;
+        padding: 6px;
     }
 
     .textarea {
@@ -41,21 +40,21 @@
         border-radius: 4px;
         background-color: #E6E6E6;
         color: #316B83;
-        padding-left: 4px;
-        padding-right: 4px;
-        padding-bottom: 4rem;
+        padding-left: 6px;
+        padding-right: 6px;
+        padding-bottom: 3rem;
         padding-top: 4px;
     }
 
     .genrePlatforms {
         margin: 1rem;
-        padding: 4px;
+        padding: 6x;
     }
     
     .select {
         background-color: #E6E6E6;
         color: #316B83;
-        padding:4px;
+        padding:6px;
         border-radius: 4px;
     }
 
@@ -85,6 +84,7 @@
         font-size: 14px;
         font-weight: 600;
         margin-top: 1rem;
+        margin-bottom: 1rem;
     }
     .buttonSection {
         align-self: center;
@@ -92,6 +92,9 @@
 
     .error {
         color: #E02401;
+        display: flex;
+        font-size: 14px;
+        justify-content: center;
     }
 
     .choices {
@@ -103,60 +106,6 @@
         border: 3px solid #316B83;
         background-color: #E6E6E6;
         border-radius: 20%;
+        color: #316B83;
+        font-weight: 600;
     }
-
-
-/* .flexContainer {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: center;
-    background-color: #6D8299;
-    margin: 50px 30px;
-}
-
-.button {
-    display: flex;
-    margin-top: 2rem;
-    border-radius: 5px;
-    padding: 10px;
-    border: 3px solid #316B83;
-    color: #316B83;
-    font-weight: 600;
-    background-color: #8CA1A5;
-    font-size: 16px;
-}
-
-.form {
-    min-width: 400px;
-    flex: 1;
-    text-align: center;
-    padding: 30px;
-
-}
-
-.formImage {
-    flex:1;
-    display: flex;
-    padding: 10px;
-} 
-
-.image {
-    height: 350px;
-    width: 400px;
-    border-radius: 30%;
-    padding: 12px;
-}
-
-.formSection {
-    width: 100%;
-    padding: 7px;
-    margin: 6px 0;
-    border: none;
-
-}
-
-.genrePlatforms {
-    background-color: #8CA1A5;
-
-} */

@@ -23,6 +23,7 @@
       }
   }
 
+
   export function searchVideogame(search){
     return function(dispatch){
         axios.get(`http://localhost:3001/videogames?name=${search}`)
@@ -85,14 +86,6 @@ export function ratingSort(payload) {
     }
 }
 
-
-// export function filterGenre(payload) {
-//     return {
-//         type: FILTER_GENRE,
-//         payload,
-//     }
-// }
-
 export function postVideogame(payload) {
     return async function (dispatch) {
         const response = await axios.post('http://localhost:3001/videogame', payload);
@@ -103,14 +96,3 @@ export function postVideogame(payload) {
         })
     }
 };
-
-// export function getPlatforms() {
-//     return async function(dispatch) {
-//         var platforms = await axios('http://localhost:3001/platforms', {
-//         })
-//         return dispatch({
-//             type: GET_PLATFORMS,
-//             payload: platforms.data
-//         })
-//     }
-// }

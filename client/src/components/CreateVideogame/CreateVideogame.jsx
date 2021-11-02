@@ -65,12 +65,10 @@ export default function CreateVideogame() {
       }
       
       function handleSelectPlatforms(e) {
-        // if(e.target.checked) {
           setVideogame({
             ...videogame,
             platforms: [...videogame.platforms, e.target.value]
           })
-          // }
         }
         
         function handleSubmit(e) {
@@ -82,9 +80,6 @@ export default function CreateVideogame() {
           }));
           dispatch(postVideogame(videogame))
           alert('Videogame succesfully created')
-          // axios.post('http://localhost:3001/videogame', videogame)
-          // .then(() => {
-            //     alert('Videogame succesfully created')
             setVideogame({
               name: '',
               image: '',
@@ -200,7 +195,6 @@ export default function CreateVideogame() {
       
                 <div className={s.formSection}>
                   <div className={s.genrePlatforms}>
-                    {/* <label>Genres:</label> */}
                     <select className={s.select} onChange={handleSelect}>
                     <option value="none" selected disabled hidden>Choose at least one Genre</option>
                         {genres.map((g) => (
@@ -213,9 +207,9 @@ export default function CreateVideogame() {
                       )}
 
                       {videogame.genres.map(g =>
-                        <div  key={g}>
-                          <p className={s.choices}>{g}</p>
-                          <input className={s.buttonDelete} type="button" value='X' onClick={()=> handleDeleteGenre(g)} /> 
+                        <div  className={s.choices} key={g}>
+                          <p >{g}</p>
+                          <input className={s.buttonDelete} type="button" value='x' onClick={()=> handleDeleteGenre(g)} /> 
                         </div>
                         )}
                   </div>
@@ -223,7 +217,6 @@ export default function CreateVideogame() {
 
                 <div className={s.formSection}>
                   <div className={s.genrePlatforms}>
-                    {/* <label>Platforms</label> */}
                     <select className={s.select} onChange={handleSelectPlatforms}>
                     <option value="none" selected disabled hidden>Choose at least one Platform</option>
                         {platforms.map((p) => (
@@ -235,9 +228,9 @@ export default function CreateVideogame() {
                       )}
 
                     {videogame.platforms.map(p =>
-                      <div key={p}>
-                        <p className={s.choices}>{p}</p>
-                        <input className={s.buttonDelete} type="button" value='X' onClick={() => handleDeletePlatform(p)} />
+                      <div  className={s.choices} key={p}>
+                        <p >{p}</p>
+                        <input className={s.buttonDelete} type="button" value='x' onClick={() => handleDeletePlatform(p)} />
                       </div>
                       )}
                   </div>
@@ -246,15 +239,9 @@ export default function CreateVideogame() {
                 <div className={s.buttonSection}>
                   <input className={s.button2} type="submit" value="CREATE" disabled={!Object.keys(errors).length === 0} />
                 </div>
-         
-      
             </form>
-      
             </div>
-
-      
           </div>
         )
-  
 }
             

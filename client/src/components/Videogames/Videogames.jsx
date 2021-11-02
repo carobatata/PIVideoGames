@@ -7,13 +7,13 @@ import s from  './Videogames.module.css';
 
 export default function Videogames() {
 
-    let videogames = useSelector((state) => state.filteredVideogames); //lo mismo que hacer el mapState
+    let videogames = useSelector((state) => state.filteredVideogames); 
     // videogames.splice(1)
 
     let dispatch = useDispatch();
     
     useEffect(() => {
-        dispatch(getVideogames()) //map dispatch to Props
+        dispatch(getVideogames())
     }, [])
 
     const [currentPage, setCurrentPage] = useState(1); //useState es estado local. empiezo en pagina 1
@@ -55,7 +55,6 @@ export default function Videogames() {
                 </div>
                 } 
             
-
             <div className={s.paginado}>
              <Paginado
                 videogamesPerPage={videogamesPerPage}

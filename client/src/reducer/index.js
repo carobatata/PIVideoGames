@@ -48,13 +48,6 @@ const initialState = {
                 ...state,
                 filteredVideogames: orderedVideogames
             }
-        case FILTER_CREATED:
-            let allVideogames = [...state.filteredVideogames];
-            const filterCreated = action.payload === 'created' ? allVideogames.filter(v => v.createdInDb) : allVideogames.filter(v => !v.createdInDb);
-            return{
-                ...state,
-                filteredVideogames: action.payload === 'all'? state.allVideogames: filterCreated
-            }
         case RATING_SORT:
             let orderedRatings = [...state.filteredVideogames]
             orderedRatings = orderedRatings.sort((a, b) => {
@@ -62,45 +55,26 @@ const initialState = {
                     return action.payload === 'asc' ? -1 : 1;
                 }
                 if(a.rating > b.rating) {
-                   return action.payload === 'asc' ? 1 : -1;
+                    return action.payload === 'asc' ? 1 : -1;
                 }
                 return 0
-                })
-                return{
-                    ...state,
-                    filteredVideogames: orderedRatings
+            })
+            return{
+                ...state,
+                filteredVideogames: orderedRatings
+            }
+        case FILTER_CREATED:
+            let allVideogames = [...state.videogames];
+            const filterCreated = action.payload === 'created' ? allVideogames.filter(v => v.createdInDb) : allVideogames.filter(v => !v.createdInDb);
+            return{
+                ...state,
+                filteredVideogames: filterCreated
+                // filteredVideogames: action.payload === 'all'? state.allVideogames: filterCreated
+
                 }
         default:
             return state;
       }  
     };
     
-    // if(action.type === "ADD_MOVIE_FAVORITE") {
-    //       return {
-    //           ...state,
-    //           moviesFavourites: [...state.moviesFavourites, action.payload]
-    //       }
-    //   }
-    //   if(action.type === "REMOVE_MOVIE_FAVORITE") {
-    //       return {
-    //           ... state,
-    //           moviesFavourites: state.moviesFavourites.filter(m => m.imdbID !== action.payload)
-    //       }
-    //   }
-    //   if(action.type === "GET_MOVIES") {
-    //       return {
-    //           ...state,
-    //           moviesLoaded: action.payload.Search
-    //       }
-    //   }
-    //   if(action.type === "GET_MOVIE_ DETAIL") {
-    //     return {
-    //         ...state,
-    //         movieDetail: action.payload
-    //     }
-    // }
-    // return state;
-  
-
-
-  
+   
