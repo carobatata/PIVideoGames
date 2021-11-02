@@ -19,7 +19,7 @@ export default function FilterByGenre() {
 
     useEffect(() => {
         dispatch(getGenres());
-      }, []);
+      }, [dispatch]);
 
     return(
         <div>

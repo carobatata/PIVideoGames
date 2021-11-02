@@ -110,7 +110,7 @@ export default function CreateVideogame() {
           
           useEffect(() => {
             dispatch(getGenres());
-          }, []);
+          }, [dispatch]);
         
           return (
                 
@@ -131,7 +131,7 @@ export default function CreateVideogame() {
                     className={s.formInput}
                     type='text'
                     name='name'
-                    placeholder='Name'
+                    placeholder='Name...'
                     value={videogame.name}
                     onChange={handleChange}
                     />
@@ -146,7 +146,7 @@ export default function CreateVideogame() {
                     className={s.formInput}
                     type='text'
                     name='image'
-                    placeholder= 'URL image'
+                    placeholder= 'URL image...'
                     value={videogame.image}
                     onChange={handleChange} />
                 </div>
@@ -168,8 +168,8 @@ export default function CreateVideogame() {
                   <textarea
                     className={s.textarea}
                     name= 'description'
-                    placeholder= 'Description'
-                    maxlength="200"
+                    placeholder= 'Description...'
+                    maxLength="200"
                     value= {videogame.description}
                     onChange={handleChange}>
                   </textarea>

@@ -14,7 +14,7 @@ export default function Videogames() {
     
     useEffect(() => {
         dispatch(getVideogames())
-    }, [])
+    }, [dispatch])
 
     const [currentPage, setCurrentPage] = useState(1); //useState es estado local. empiezo en pagina 1
     const [videogamesPerPage, setVideogamesPerPage] = useState(15);
