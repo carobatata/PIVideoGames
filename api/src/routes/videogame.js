@@ -61,7 +61,7 @@ router.get('/:idVideogame', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
     const { genres, name, image, description, releaseDate, rating, platforms, createdInDb } = req.body;
     
-    if(!name || !description || !platforms) return res.status(400).send({error:'Name, description and platforms are required'});
+    if(!name || !description || !platforms ||!genres) return res.status(400).send({error:'Name, description and platforms are required'});
         
     try {
         let  newVideogame = await Videogame.create({
