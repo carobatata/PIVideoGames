@@ -1,12 +1,12 @@
   const axios = require('axios');
   export const GET_VIDEOGAMES = 'GET_VIDEOGAMES';
-  export const GET_GENRES = 'GET_GENRES';
-  export const FILTER_GENRE = 'FILTER_GENRE';
-  export const POST_VIDEOGAME = 'POST_VIDEOGAME';
   export const SEARCH_VIDEOGAME = 'SEARCH_VIDEOGAME';
-  export const FILTER_CREATED = 'FILTER_CREATED';
+  export const FILTER_GENRE = 'FILTER_GENRE';
+  export const GET_GENRES = 'GET_GENRES';
+  export const POST_VIDEOGAME = 'POST_VIDEOGAME';
   export const ALPHABETICAL_SORT = 'ALPHABETICAL_SORT';
   export const RATING_SORT = 'RATING_SORT';
+  export const FILTER_CREATED = 'FILTER_CREATED';
 //   export const GET_DETAIL = 'GET_DETAIL';
 
 
@@ -88,6 +88,13 @@ export function alphabeticalSort(payload) {
     }
 }
 
+export function ratingSort(payload) {
+    return {
+        type: RATING_SORT,
+        payload,
+    }
+};
+
 export function filterCreated(payload) {
     return {
         type: FILTER_CREATED,
@@ -95,12 +102,6 @@ export function filterCreated(payload) {
     }
 };
 
-export function ratingSort(payload) {
-    return {
-        type: RATING_SORT,
-        payload,
-    }
-};
 
 
 // export function getDetail(id) {

@@ -6,21 +6,14 @@ import s from  './CreateVideogame.module.css';
  
 function validate(input) {
  let errors = {};
- if(!input.name) {
-   errors.name = '*Name is required'
-  } else if(!input.realeseDate) {
-    errors.realeseDate = '*Release date is required'
-   } else if(!input.description) {
-   errors.description = '*Description is required'
-  } else if(!input.rating) {
-  errors.rating = '*Rating is required'
-  } else if(!input.genres) {
-  errors.genres = '*Select at least one genre'
-  } else if(!input.platforms) {
-  errors.platforms = '*Select at least one platform'
+ if(!input.name) errors.name = '*Name is required'
+ if(!input.realeseDate) errors.realeseDate = '*Release date is required'
+ if(!input.description) errors.description = '*Description is required'
+ if(!input.rating) errors.rating = '*Rating is required'
+ if(!input.genres.length) errors.genres = '*Select at least one genre'
+ if(!input.platforms.length) errors.platforms = '*Select at least one platform'
+return errors;
 }
- return errors;
-};
  
 export default function CreateVideogame() {
 
@@ -40,10 +33,14 @@ export default function CreateVideogame() {
      date: '',
      platforms: [],
      genres: []
-   });
- 
-   const [errors, setErrors] = useState({});
- 
+    });
+    
+    const [errors, setErrors] = useState({});
+    
+    useEffect(() => {
+      dispatch(getGenres());
+    }, [dispatch]);
+    
    function handleChange(e) {
        e.preventDefault();
        setVideogame({
@@ -54,7 +51,6 @@ export default function CreateVideogame() {
          ...videogame,
          [e.target.name]: e.target.value
         }))
-        console.log(videogame)
       }
       
       function handleSelect(e) {
@@ -62,22 +58,61 @@ export default function CreateVideogame() {
           ...videogame,
           genres: [...videogame.genres, e.target.value]
         })
-      }
-      
-      function handleSelectPlatforms(e) {
-          setVideogame({
+        setErrors(
+          validate({
             ...videogame,
-            platforms: [...videogame.platforms, e.target.value]
+            [e.target.name]: e.target.value,
           })
+        )
+      }
+
+      function handleSelectGenres(e) {
+        setVideogame({
+          ...videogame,
+          genres: [...videogame.genres, e.target.value]
+          .filter((v) => v !== 'Select at least one genre')
+          .reduce((acc, videogame) => {
+            if(!acc.includes(videogame)) {
+              acc.push(videogame)
+            }
+            return acc;
+          }, []),
+        });
+        if(!videogame.genres.length) {
+          setErrors({
+            ...errors,
+            genres: '',
+            })
         }
+      }
+
+
+      function handleSelectPlatforms(e) {
+        setVideogame({
+          ...videogame,
+          platforms: [...videogame.platforms, e.target.value]
+          .filter((v) => v !== 'Select at least one platform')
+          .reduce((acc, videogame) => {
+            if(!acc.includes(videogame)) {
+              acc.push(videogame)
+            }
+            return acc;
+          }, []),
+        });
+        if(!videogame.platforms.length) {
+          setErrors({
+            ...errors,
+            platforms: '',
+            })
+        }
+      }
         
         function handleSubmit(e) {
           e.preventDefault();
-          console.log(videogame)
-          setErrors(validate({
-            ...videogame,
-            [e.target.name]: e.target.value
-          }));
+          // setErrors(validate({
+          //   ...videogame,
+          //   [e.target.name]: e.target.value
+          // }));
           dispatch(postVideogame(videogame))
           alert('Videogame succesfully created')
             setVideogame({
@@ -88,7 +123,7 @@ export default function CreateVideogame() {
               rating:'',
               date: '',
               platforms: [],
-              genres: []
+              genres: [],
             })
             history.push('/home')
           }
@@ -107,10 +142,6 @@ export default function CreateVideogame() {
               platforms: videogame.platforms.filter(p => p !== platform)
           })
         }
-          
-          useEffect(() => {
-            dispatch(getGenres());
-          }, [dispatch]);
         
           return (
                 
@@ -202,23 +233,23 @@ export default function CreateVideogame() {
       
                 <div className={s.formSection}>
                   <div className={s.genrePlatforms}>
-                    <select className={s.select} onChange={handleSelect} defaultValue={'DEFAULT'}>
+                    <select className={s.select} onChange={handleSelectGenres} defaultValue={'DEFAULT'}>
                     <option value="DEFAULT" disabled>Choose at least one Genre</option>
                         {genres.map((g) => (
                           <option value={g.name} key={g.id}>{g.name}</option>
                         ))}
                     </select>
-
+                    {videogame.genres.map(g =>
+                      <div  className={s.choices} key={g}>
+                        <p >{g}</p>
+                        <input className={s.buttonDelete} type="button" value='x' onClick={()=> handleDeleteGenre(g)} /> 
+                      </div>
+                      )}
+                      
                     {errors.genres && (
                       <p className={s.error}>{errors.genres}</p>
                       )}
 
-                      {videogame.genres.map(g =>
-                        <div  className={s.choices} key={g}>
-                          <p >{g}</p>
-                          <input className={s.buttonDelete} type="button" value='x' onClick={()=> handleDeleteGenre(g)} /> 
-                        </div>
-                        )}
                   </div>
                 </div>
 
@@ -244,11 +275,50 @@ export default function CreateVideogame() {
                 </div>
                 
                 <div className={s.buttonSection}>
-                  <input className={s.button2} type="submit" value="CREATE" disabled={!Object.keys(errors).length === 0} />
+                  <input className={s.button2} 
+                    type="submit" 
+                    value="CREATE" 
+                    disabled={!videogame.name || errors.name || errors.description || errors.realeseDate || errors.rating || errors.genres || errors.platforms} />
                 </div>
             </form>
             </div>
           </div>
         )
-}
-            
+};
+
+
+
+      // function handleSelect(e) {
+      //   setInput({
+      //     ...input,
+      //     countryCode: [...input.countryCode, e.target.value]
+      //       .filter((country) => country !== "Select a country")
+      //       .reduce((acc, item) => {
+      //         if (!acc.includes(item)) {
+      //           acc.push(item);
+      //         }
+      //         return acc;
+      //       }, []),
+      //   });
+      //   if (!input.countryCode.length) {
+      //     setErrors({
+      //       ...errors,
+      //       countryCode: "",
+      //     });
+      //   }
+      // }
+
+
+      
+      // function handleSelectPlatforms(e) {
+      //     setVideogame({
+      //       ...videogame,
+      //       platforms: [...videogame.platforms, e.target.value]
+      //     })
+      //     setErrors(
+      //       validate({
+      //         ...videogame,
+      //         [e.target.name]: e.target.value,
+      //       })
+      //     )
+      //   }
