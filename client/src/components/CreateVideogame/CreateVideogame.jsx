@@ -115,11 +115,14 @@ export default function CreateVideogame() {
           return (
                 
           <div className={s.container}>
-            <Link to='/home' className={s.link}>
-              <button className={s.button} >Home</button>
-            </Link>
-      
-      
+           
+           <div className={s.navbar}>
+                     <span className={s.title1}> Land of Videogames</span>
+                     <Link to='/home' className={s.link}>
+                        <button className={s.button}>Home</button>
+                    </Link>
+                </div>
+                 
             <div className={s.formcontainer}>
 
             <form className={s.form} onSubmit={handleSubmit}>
@@ -134,6 +137,7 @@ export default function CreateVideogame() {
                     placeholder='Name...'
                     value={videogame.name}
                     onChange={handleChange}
+                    required
                     />
                     {errors.name && (
                       <p className={s.error}>{errors.name}</p>
@@ -153,11 +157,12 @@ export default function CreateVideogame() {
 
                 <div className={s.formSection}>
                   <input
-                    className={s.formInput}
+                    className={s.formDate}
                     type='date'
                     name='realeseDate'
                     placeholder= 'Release Date'
                     value={videogame.realeseDate}
+                    required
                     onChange={handleChange} />
                     {errors.realeseDate && (
                     <p className={s.error}>{errors.realeseDate}</p>
@@ -170,6 +175,7 @@ export default function CreateVideogame() {
                     name= 'description'
                     placeholder= 'Description...'
                     maxLength="200"
+                    required
                     value= {videogame.description}
                     onChange={handleChange}>
                   </textarea>

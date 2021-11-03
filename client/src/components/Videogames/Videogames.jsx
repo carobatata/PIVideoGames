@@ -56,7 +56,7 @@ export default function Videogames() {
                 </div>
                 } 
             
-            <div className={s.paginado}>
+            <div>
              <Paginado
                 videogamesPerPage={videogamesPerPage}
                 videogames={videogames.length}

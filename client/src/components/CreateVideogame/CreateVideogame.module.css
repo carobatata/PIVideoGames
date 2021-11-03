@@ -27,30 +27,40 @@
     border-radius: 6px;
     }
 
-
-
     .formInput {
-        margin: 1rem;
+        margin: 0.5rem;
         border-radius: 4px;
         background-color: #E6E6E6;
         color: #316B83;
         padding: 6px;
     }
 
-    .textarea {
-        margin: 1rem;
+    .formDate {
+        margin: 0.5rem;
+        margin-bottom: 1rem;
         border-radius: 4px;
         background-color: #E6E6E6;
         color: #316B83;
-        padding-left: 6px;
-        padding-right: 6px;
-        padding-bottom: 3rem;
-        padding-top: 4px;
+        padding-bottom: 5px;
+        padding-top: 5px;
+        padding-left: 1.2rem;
+        padding-right: 1.2rem;
+
+    }
+
+    .textarea {
+        border-radius: 4px;
+        background-color: #E6E6E6;
+        color: #316B83;
+        padding-top: 1rem;
+        padding-bottom: 5rem;
+        padding-left: 1rem;
+        padding-right: 7rem;
     }
 
     .genrePlatforms {
-        margin: 1rem;
-        padding: 6x;
+        margin: 0.25rem;
+        padding: 6px;
     }
     
     .select {
@@ -60,19 +70,39 @@
         border-radius: 4px;
     }
 
-    .button {
+    .navbar {
         display: flex;
-        margin-top: 2rem;
-        border-radius: 5px;
-        padding: 10px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
         border: 3px solid #316B83;
-        color: #316B83;
-        font-weight: 600;
-        background-color: #8CA1A5;
-        font-size: 16px;
-        margin-left: 2rem;
+        background-color: #316B83;
+        padding: 15px;
     }
     
+    .title1 {
+        font-size: 18px;
+        font-weight: 600;
+        color: #E6E6E6;
+        font-style: italic;
+        margin-left: 1rem;
+    }
+    
+    .button {
+        border-radius: 6px;
+        padding-right: 15px;
+        padding-left: 15px;
+        padding-top: 9px;
+        padding-bottom: 9px;
+        border: 2.5px solid #316B83;
+        background-color: #E6E6E6;
+        color: #316B83;
+        font-size: 14px;
+        font-weight: 600;
+        margin-right: 1rem;
+        cursor: pointer;
+    }
+
     .link {
         text-decoration: none;
     }
@@ -91,13 +121,14 @@
         font-weight: 600;
         margin-top: 1rem;
         margin-bottom: 1rem;
+        cursor: pointer;
     }
     .buttonSection {
         align-self: center;
     }
 
     .error {
-        color: #E02401;
+        color: tomato;
         display: flex;
         font-size: 14px;
         justify-content: center;
@@ -114,4 +145,5 @@
         border-radius: 20%;
         color: #316B83;
         font-weight: 600;
+        cursor: pointer;
     }

@@ -16,12 +16,15 @@ export default function VideogameDetail() {
     }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
     if(videogame) {
-            return(
+            return(          
                 <div className={s.container}>
-                    <Link to='/home' className={s.link}>
+                <div className={s.navbar}>
+                     <span className={s.title1}> Land of Videogames</span>
+                     <Link to='/home' className={s.link}>
                         <button className={s.button}>Home</button>
                     </Link>
-                    <div>
+                </div>
+
                         <h1 className={s.title}>{videogame.name}</h1>
 
                         <div className={s.genres}>
@@ -45,7 +48,6 @@ export default function VideogameDetail() {
                        <div className={s.platforms}>
                         {videogame.platforms.map(platform => <span className={s.platform} key={platform} >{platform}</span>)}
                        </div>
-                    </div>
                 </div>
             )
         } else {

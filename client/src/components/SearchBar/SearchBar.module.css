@@ -12,10 +12,11 @@
     border: 2.5px solid #316B83;
     margin-right: 1px;
     background: #E6E6E6;
-    padding-bottom: 2px;
+    padding: 4px;
+    /* padding-bottom: 2px;
     padding-top: 2px;
     padding-left: 3px;
-    padding-right: 3px;
+    padding-right: 3px; */
 }
 
 .button {
@@ -24,10 +25,11 @@
     background: #E6E6E6;
     color: #316B83;
     font-weight: 600;
-    padding-bottom: 2px;
-    padding-top: 2px;
+    padding-bottom: 4px;
+    padding-top: 4px;
     padding-left: 5px;
     padding-right: 5px;
+    cursor: pointer;
 }
 
  

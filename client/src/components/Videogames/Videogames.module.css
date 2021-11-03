@@ -25,6 +25,7 @@
     font-weight: 600;
     margin-top: 0.1rem;
     margin-bottom: 1rem;
+    cursor: pointer;
 }
 
 .novideogame {
@@ -37,5 +38,3 @@
 .photo {
     width: 20%;
 }
-
-

@@ -1,8 +1,40 @@
 .container {
     color: #316B83;
-    margin: 2rem;
 }
 
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border: 3px solid #316B83;
+    background-color: #316B83;
+    padding: 15px;
+}
+
+.title1 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #E6E6E6;
+    font-style: italic;
+    margin-left: 1rem;
+}
+
+.button {
+    border-radius: 6px;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    border: 2.5px solid #316B83;
+    background-color: #E6E6E6;
+    color: #316B83;
+    font-size: 14px;
+    font-weight: 600;
+    margin-right: 1rem;
+    cursor: pointer;
+}
+/* 
 .button {
     display: flex;
     margin-top: 2rem;
@@ -13,7 +45,7 @@
     font-weight: 600;
     background-color: #8CA1A5;
     font-size: 16px;
-}
+} */
 
 .title {
     padding-top: 0.2rem;
