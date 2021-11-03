@@ -12,11 +12,11 @@ import Videogames from './components/Videogames/Videogames';
 import FilterByCreation from './components/Filters/FilterByCreation.jsx';
 import FilterByGenre from './components/Filters/FilterByGenre';
 import Order from './components/Orders/Order';
-import { configure, shallow } from 'enzyme';
+import {configure, shallow} from 'enzyme';
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 
-
 configure({ adapter: new Adapter() });
+// import Adapter from '@wojtekmaj/enzyme-adapter-react-16';
 
 describe("<Home />", () => {
   let wrapper;
