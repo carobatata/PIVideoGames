@@ -53,18 +53,6 @@ export default function CreateVideogame() {
         }))
       }
       
-      function handleSelect(e) {
-        setVideogame({
-          ...videogame,
-          genres: [...videogame.genres, e.target.value]
-        })
-        setErrors(
-          validate({
-            ...videogame,
-            [e.target.name]: e.target.value,
-          })
-        )
-      }
 
       function handleSelectGenres(e) {
         setVideogame({
@@ -322,3 +310,15 @@ export default function CreateVideogame() {
       //       })
       //     )
       //   }
+     // function handleSelect(e) {
+      //   setVideogame({
+      //     ...videogame,
+      //     genres: [...videogame.genres, e.target.value]
+      //   })
+      //   setErrors(
+      //     validate({
+      //       ...videogame,
+      //       [e.target.name]: e.target.value,
+      //     })
+      //   )
+      // }
