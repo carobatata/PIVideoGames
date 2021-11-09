@@ -7,7 +7,7 @@ export default function AlphabeticalOrder() {
     const dispatch = useDispatch();
 
     function handleSelectChange(e) {
-        if(e.target.value === 'ascendente' || e.target.value=== 'descendente'){
+        if(e.target.value === 'ascendente' || e.target.value === 'descendente'){
             dispatch(alphabeticalSort(e.target.value))
         } else {
             dispatch(ratingSort(e.target.value))

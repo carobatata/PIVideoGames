@@ -51,8 +51,7 @@ export default function Videogames() {
             </div>   
             : 
                 <div className={s.novideogame}>
-                    <h1 >Loading...</h1> 
-                    <h4>if persists: Sorry! There is no match for your search. </h4>
+                    <h2> Sorry! There is no match for your search. </h2>
                     <img className={s.photo} src="https://preview.redd.it/zqqvyy6rtll61.png?auto=webp&s=c0893407ab92d129cba70a606e9e64b5afe014e7" alt="SadMarioBross" />
                 </div>
                 } 

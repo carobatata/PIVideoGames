@@ -48,7 +48,6 @@ router.get('/', async (req, res, next) => {
 
             allVideogames = [...videogamePromiseDb, ...videogamePromiseApi];
             allVideogames = allVideogames.slice(0, 15);
-        
         }
          else if(genre) {
 
@@ -123,19 +122,7 @@ async function getAllVideogames() {
             }
         }]
     })
-    videogamePromiseDb = videogamePromiseDb.map((v) => {
-        return {
-            id: v.id,
-            name: v.name,
-            description: v.description,
-            image: v.image,
-            releaseDate: v.released,
-            rating: v.rating,
-            platforms: v.platforms,
-            genres: v.genres.map(g => g.name),
-            createdInDb: v.createdInDb
-        }})
-
+    videogamePromiseDb = mapVideogameFromDB(videogamePromiseDb)
 
     let videogamePromiseApi = await getAllVideogamesFromApi()
 
