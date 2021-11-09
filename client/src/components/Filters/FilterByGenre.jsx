@@ -9,7 +9,6 @@ export default function FilterByGenre() {
 
     const genres = useSelector((state) => state.genres)
 
-
     const dispatch = useDispatch();
 
     function handleSelectChange(e) {

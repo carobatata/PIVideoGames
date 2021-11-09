@@ -74,7 +74,6 @@ export default function CreateVideogame() {
         }
       }
 
-
       function handleSelectPlatforms(e) {
         setVideogame({
           ...videogame,
@@ -97,10 +96,6 @@ export default function CreateVideogame() {
         
         function handleSubmit(e) {
           e.preventDefault();
-          // setErrors(validate({
-          //   ...videogame,
-          //   [e.target.name]: e.target.value
-          // }));
           dispatch(postVideogame(videogame))
           alert('Videogame succesfully created')
             setVideogame({

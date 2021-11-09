@@ -135,7 +135,10 @@
     }
 
     .choices {
+        display: flex;
         font-size: 12px;
+        align-items: center;
+        justify-content: center;
     }
 
     .buttonDelete {

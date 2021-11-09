@@ -52,6 +52,7 @@ export function filterGenre(search){
     }
 };
 
+
 export function getGenres() {
     return async function(dispatch) {
         try {
@@ -65,6 +66,7 @@ export function getGenres() {
         }
     }
 };
+
 
 export function postVideogame(payload) {
     return async function (dispatch) {
