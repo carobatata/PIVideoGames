@@ -248,12 +248,15 @@ export default function CreateVideogame() {
                       <p className={s.error}>{errors.platforms}</p>
                       )}
 
+                <div>
                     {videogame.platforms.map(p =>
                       <div  className={s.choices} key={p}>
                         <p >{p}</p>
                         <input className={s.buttonDelete} type="button" value='x' onClick={() => handleDeletePlatform(p)} />
                       </div>
                       )}
+                </div>
+
                   </div>
                 </div>
                 

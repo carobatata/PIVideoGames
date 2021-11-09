@@ -4,7 +4,10 @@ const initialState = {
     videogames : [],
     filteredVideogames: [],
     genres: [],
-    detail: []
+    detail: [],
+    nameOrder: 'default',
+    creationFilter: 'default',
+    genreFilter: 'default'
   };
 
   export default function reducer(state = initialState, action) {
@@ -13,7 +16,10 @@ const initialState = {
             return {
                 ...state,
                 videogames: action.payload,
-                filteredVideogames: action.payload
+                filteredVideogames: action.payload,
+                nameOrder: 'default',
+                creationFilter: 'default',
+                genreFilter: 'default'
             }
         case SEARCH_VIDEOGAME:
             return {
@@ -23,7 +29,10 @@ const initialState = {
         case FILTER_GENRE:
             return {
                 ...state,
-                filteredVideogames: action.payload
+                filteredVideogames: action.payload,
+                nameOrder: 'default',
+                creationFilter: 'default',
+                genreFilter: action.search
             }    
         case GET_GENRES:
             return {
@@ -47,7 +56,8 @@ const initialState = {
             })
             return{
                 ...state,
-                filteredVideogames: orderedVideogames
+                filteredVideogames: orderedVideogames,
+                nameOrder: action.payload,
             }
         case RATING_SORT:
             let orderedRatings = [...state.filteredVideogames]
@@ -60,16 +70,22 @@ const initialState = {
                 }
                 return 0
             })
+            const nameOrder = action.payload
             return{
                 ...state,
-                filteredVideogames: orderedRatings
+                filteredVideogames: orderedRatings,
+                nameOrder: nameOrder,
             }
         case FILTER_CREATED:
             let allVideogames = [...state.videogames];
             const filterCreated = action.payload === 'created' ? allVideogames.filter(v => v.createdInDb) : allVideogames.filter(v => !v.createdInDb);
+            const status = action.payload
             return{
                 ...state,
-                filteredVideogames: filterCreated
+                filteredVideogames: filterCreated,
+                nameOrder: 'default',
+                genreFilter: 'default',
+                creationFilter: status
                 // filteredVideogames: action.payload === 'all'? state.allVideogames: filterCreated
             }
         case GET_DETAIL:
