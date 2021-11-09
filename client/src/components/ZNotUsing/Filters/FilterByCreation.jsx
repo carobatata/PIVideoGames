@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { filterCreated} from '../../actions/index.js';
+import { filterCreated} from '../../../actions/index.js';
 import s from  './FilterByCreation.module.css';
 
 export default function FilterByCreation() {

@@ -57,9 +57,10 @@ export default function Videogames() {
     function handleSelectChange(e) {
         if(e.target.value === 'ascendente' || e.target.value === 'descendente'){
             dispatch(alphabeticalSort(e.target.value))
+            setCurrentPage(1);
         } else {
             dispatch(ratingSort(e.target.value))
-
+            setCurrentPage(1);
         }
     }
 

@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { alphabeticalSort, ratingSort } from '../../actions/index.js';
+import { alphabeticalSort, ratingSort } from '../../../../actions/index.js';
 import s from  './Order.module.css';
 
 export default function AlphabeticalOrder() {
