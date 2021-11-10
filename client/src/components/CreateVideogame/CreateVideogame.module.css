@@ -150,3 +150,10 @@
         font-weight: 600;
         cursor: pointer;
     }
+
+    /* .gridformat {
+        display: grid;
+        grid-template-rows: 30px 30px 30px;
+        grid-template-columns: 100px 100px 100px;
+        grid-gap: 2px;
+    } */

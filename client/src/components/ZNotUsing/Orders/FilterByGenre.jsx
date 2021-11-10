@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { filterGenre, getGenres } from '../../../actions';
+import { filterGenre, getGenres } from '../../actions';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import s from  './FilterByGenre.module.css';

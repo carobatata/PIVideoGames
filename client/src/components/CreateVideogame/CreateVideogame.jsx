@@ -222,12 +222,15 @@ export default function CreateVideogame() {
                           <option value={g.name} key={g.id}>{g.name}</option>
                         ))}
                     </select>
-                    {videogame.genres.map(g =>
-                      <div  className={s.choices} key={g}>
-                        <p >{g}</p>
-                        <input className={s.buttonDelete} type="button" value='x' onClick={()=> handleDeleteGenre(g)} /> 
-                      </div>
-                      )}
+
+                    <div className={s.gridformat}>
+                      {videogame.genres.map(g =>
+                        <div  className={s.choices} key={g}>
+                          <p >{g}</p>
+                          <input className={s.buttonDelete} type="button" value='x' onClick={()=> handleDeleteGenre(g)} /> 
+                        </div>
+                        )}
+                    </div>
                       
                     {errors.genres && (
                       <p className={s.error}>{errors.genres}</p>
@@ -244,11 +247,8 @@ export default function CreateVideogame() {
                           <option key={p.id} value={p}>{p}</option>
                         ))}
                     </select>
-                    {errors.platforms && (
-                      <p className={s.error}>{errors.platforms}</p>
-                      )}
 
-                <div>
+                <div className={s.gridformat}>
                     {videogame.platforms.map(p =>
                       <div  className={s.choices} key={p}>
                         <p >{p}</p>
@@ -256,6 +256,10 @@ export default function CreateVideogame() {
                       </div>
                       )}
                 </div>
+
+                      {errors.platforms && (
+                        <p className={s.error}>{errors.platforms}</p>
+                        )}
 
                   </div>
                 </div>

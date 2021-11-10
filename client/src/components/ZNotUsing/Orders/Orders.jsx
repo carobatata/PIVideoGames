@@ -1,8 +1,8 @@
 import { useDispatch } from 'react-redux';
-import { alphabeticalSort, ratingSort } from '../../../../actions/index.js';
-import s from  './Order.module.css';
+import { alphabeticalSort, ratingSort } from '../../actions/index.js';
+import s from  './Orders.module.css';
 
-export default function AlphabeticalOrder() {
+export default function Orders() {
     
     const dispatch = useDispatch();
 
