@@ -3,7 +3,6 @@ import { filterGenre, getGenres, filterCreated, alphabeticalSort, ratingSort } f
 import s from  './FiltersAndOrders.module.css';
 import { useEffect } from 'react';
 
-
 export default function FiltersAndOrders({setCurrentPage}) {
 
     const genres = useSelector((state) => state.genres)
@@ -12,7 +11,6 @@ export default function FiltersAndOrders({setCurrentPage}) {
     const genreFilter = useSelector((state) => state.genreFilter)
 
     const dispatch = useDispatch();
-
 
     function handleFilterCreated(e) {
         e.preventDefault();
@@ -68,18 +66,3 @@ export default function FiltersAndOrders({setCurrentPage}) {
     </div>
     )
 };
-
-{/* <div>
-<select className={s.select} name='Creation Order' onChange={ e => handleFilterCreated(e)} defaultValue={'DEFAULT'}>
-    <option value='DEFAULT' disabled>API or DB</option>
-    <option value='created'>From Database</option>
-    <option value='api'>From RAWG API</option>
-</select>
-
-<select className={s.select} name="Genre Filter" onChange={handleFilterGenre} defaultValue={'DEFAULT'}>
-    <option value='DEFAULT' disabled>Genre</option>
-    {genres.map((g) =>(
-    <option key={g.id} value={g.name}>{g.name}</option>
-    ))}
-</select>
-</div> */}

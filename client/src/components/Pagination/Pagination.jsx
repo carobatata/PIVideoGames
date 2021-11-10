@@ -5,7 +5,6 @@ export default function Pagination({videogamesPerPage, videogames, paginate}) {
     for(var i=1; i <= Math.ceil(videogames/videogamesPerPage); i++) {
         pageNumbers.push(i);
     }
-
         return(
             <nav>
                 <ul className={s.pages}>

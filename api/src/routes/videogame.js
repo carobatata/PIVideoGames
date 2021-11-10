@@ -11,8 +11,6 @@ router.get('/:idVideogame', async (req, res, next) => {
         let videogame;
         if(typeof idVideogame === 'string' && idVideogame.length > 7) {
             //es mi id
-            // videogame = await Videogame.findByPk(idVideogame);
-
             videogame = await Videogame.findByPk(idVideogame, {
                 include:[{
                     model:Genre,
@@ -21,9 +19,7 @@ router.get('/:idVideogame', async (req, res, next) => {
                         attributes: []
                     }
                 }]
-  
             });
-  
             videogame = {
                     id: videogame.id,
                     name: videogame.name,
@@ -35,7 +31,6 @@ router.get('/:idVideogame', async (req, res, next) => {
                     genres: videogame.genres.map(g => g.name),
                     createdInDb: videogame.createdInDb
             }
-
         } else {
             //es de la API
             videogame = await axios.get(`https://api.rawg.io/api/games/${idVideogame}?key=${APIKEY}`);
@@ -51,6 +46,7 @@ router.get('/:idVideogame', async (req, res, next) => {
                 genres: videogame.genres.map(g => g.name)
             }
         }
+
         res.send(videogame);
         
     } catch (error) {
@@ -64,7 +60,7 @@ router.post('/', async (req, res, next) => {
     if(!name || !description || !platforms ||!genres) return res.status(400).send({error:'Name, description and platforms are required'});
         
     try {
-        let  newVideogame = await Videogame.create({
+        let newVideogame = await Videogame.create({
             name,
             image,
             description,
@@ -78,12 +74,13 @@ router.post('/', async (req, res, next) => {
         })
     
         await newVideogame.addGenres(genreDb);
-            res.send(newVideogame);
+        
+        res.send(newVideogame);
     
-     } catch (error) {
+    } catch (error) {
          next(error);
-     }
-    });
+    }
+});
  
 module.exports = router;
 

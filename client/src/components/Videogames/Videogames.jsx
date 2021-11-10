@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getVideogames, filterGenre, getGenres, filterCreated, alphabeticalSort, ratingSort } from '../../actions/index.js';
+import { getVideogames, getGenres } from '../../actions/index.js';
 import Videogame from '../Videogame/Videogame';
 import Pagination from '../Pagination/Pagination.jsx';
 import s from  './Videogames.module.css';
@@ -17,7 +17,7 @@ export default function Videogames() {
         dispatch(getVideogames())
     }, [dispatch])
 
-    const [currentPage, setCurrentPage] = useState(1); //useState es estado local. empiezo en pagina 1
+    const [currentPage, setCurrentPage] = useState(1); 
     const [videogamesPerPage] = useState(15);
     const indexLastVideogame = currentPage * videogamesPerPage;
     const indexFirstVideogame = indexLastVideogame - videogamesPerPage;
@@ -41,30 +41,30 @@ export default function Videogames() {
     return (
         <div className={s.container}>
 
-        <FiltersAndOrders setCurrentPage={setCurrentPage} className={s.orderFilter}/>
+            <FiltersAndOrders setCurrentPage={setCurrentPage} className={s.orderFilter}/>
 
-        <button className={s.button} onClick={e=> {handleClick(e)}}>Reset Videogames</button>
+            <button className={s.button} onClick={e=> {handleClick(e)}}>Reset Videogames</button>
 
-        <div>
-            <Pagination
-                videogamesPerPage={videogamesPerPage}
-                videogames={videogames.length}
-                paginate = {paginate}/>
-        </div>
+            <div>
+                <Pagination
+                    videogamesPerPage={videogamesPerPage}
+                    videogames={videogames.length}
+                    paginate = {paginate}/>
+            </div>
 
-        {currentVideogames.length > 0 ? 
-        <div className={s.flexItem}> 
-            {currentVideogames.map((videogame) => {
-                return <Videogame 
-                    id={videogame.id}
-                    image={videogame.image} 
-                    name={videogame.name}
-                    genres={videogame.genres}
-                    rating={videogame.rating}
-                    key={videogame.id}
-                />
-            })}     
-        </div>   
+            {currentVideogames.length > 0 ? 
+            <div className={s.flexItem}> 
+                {currentVideogames.map((videogame) => {
+                    return <Videogame 
+                        id={videogame.id}
+                        image={videogame.image} 
+                        name={videogame.name}
+                        genres={videogame.genres}
+                        rating={videogame.rating}
+                        key={videogame.id}
+                    />
+                })}     
+            </div>   
             : 
             <div className={s.novideogame}>
                 <h2>LOADING...</h2>

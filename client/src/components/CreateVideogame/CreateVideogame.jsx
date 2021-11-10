@@ -21,11 +21,11 @@ export default function CreateVideogame() {
   
   const genres = useSelector((state) => state.genres)
   
-   const dispatch = useDispatch();
-   const history = useHistory();
+  const dispatch = useDispatch();
+  const history = useHistory();
    
  
-   const [videogame, setVideogame] = useState({
+  const [videogame, setVideogame] = useState({
      name: '',
      image: '',
      description: '',
@@ -35,245 +35,235 @@ export default function CreateVideogame() {
      genres: []
     });
     
-    const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState({});
     
-    useEffect(() => {
-      dispatch(getGenres());
-    }, [dispatch]);
+  useEffect(() => {
+    dispatch(getGenres());
+  }, [dispatch]);
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    dispatch(postVideogame(videogame))
+    alert('Videogame succesfully created')
+      setVideogame({
+        name: '',
+        image: '',
+        description: '',
+        realeseDate: '',
+        rating:'',
+        date: '',
+        platforms: [],
+        genres: [],
+        })
+        history.push('/home')
+  }
     
-   function handleChange(e) {
-       e.preventDefault();
-       setVideogame({
-         ...videogame,
-         [e.target.name]: e.target.value
-       });
-       setErrors(validate({
-         ...videogame,
-         [e.target.name]: e.target.value
-        }))
-      }
+  function handleChange(e) {
+      e.preventDefault();
+      setVideogame({
+        ...videogame,
+        [e.target.name]: e.target.value
+      });
+      setErrors(validate({
+        ...videogame,
+        [e.target.name]: e.target.value
+      }))
+  }
       
-
-      function handleSelectGenres(e) {
-        setVideogame({
-          ...videogame,
-          genres: [...videogame.genres, e.target.value]
-          .filter((v) => v !== 'Select at least one genre')
-          .reduce((acc, videogame) => {
-            if(!acc.includes(videogame)) {
-              acc.push(videogame)
-            }
-            return acc;
-          }, []),
-        });
-        if(!videogame.genres.length) {
-          setErrors({
-            ...errors,
-            genres: '',
-            })
+  function handleSelectGenres(e) {
+    setVideogame({
+      ...videogame,
+      genres: [...videogame.genres, e.target.value]
+      .reduce((acc, genre) => {
+        if(!acc.includes(genre)) {
+          acc.push(genre)
         }
+        return acc;
+      }, []),
+    });
+    if(!videogame.genres.length) {
+      setErrors({
+        ...errors,
+        genres: '',
+        })
       }
+    }
 
-      function handleSelectPlatforms(e) {
-        setVideogame({
-          ...videogame,
-          platforms: [...videogame.platforms, e.target.value]
-          .filter((v) => v !== 'Select at least one platform')
-          .reduce((acc, videogame) => {
-            if(!acc.includes(videogame)) {
-              acc.push(videogame)
-            }
-            return acc;
-          }, []),
-        });
-        if(!videogame.platforms.length) {
-          setErrors({
-            ...errors,
-            platforms: '',
-            })
+  function handleSelectPlatforms(e) {
+    setVideogame({
+      ...videogame,
+      platforms: [...videogame.platforms, e.target.value]
+      .reduce((acc, platform) => {
+        if(!acc.includes(platform)) {
+          acc.push(platform)
         }
-      }
-        
-        function handleSubmit(e) {
-          e.preventDefault();
-          dispatch(postVideogame(videogame))
-          alert('Videogame succesfully created')
-            setVideogame({
-              name: '',
-              image: '',
-              description: '',
-              realeseDate: '',
-              rating:'',
-              date: '',
-              platforms: [],
-              genres: [],
-            })
-            history.push('/home')
-          }
-          
-          
-          function handleDeleteGenre(genre) {
-            setVideogame({
-              ...videogame,
-              genres: videogame.genres.filter(g => g !== genre)
-            })
-          }
-          
-          function handleDeletePlatform(platform) {
-            setVideogame({
-              ...videogame,
-              platforms: videogame.platforms.filter(p => p !== platform)
+        return acc;
+      }, []),
+      });
+      if(!videogame.platforms.length) {
+        setErrors({
+          ...errors,
+          platforms: '',
           })
         }
-        
-          return (
-                
-          <div className={s.container}>
-           
-           <div className={s.navbar}>
-                     <span className={s.title1}> Land of Videogames</span>
-                     <Link to='/home' className={s.link}>
-                        <button className={s.button}>Home</button>
-                    </Link>
-                </div>
-                 
-            <div className={s.formcontainer}>
-
-            <form className={s.form} onSubmit={handleSubmit}>
-
-                <h2>Create your Videogame</h2>
-          
-                <div className={s.formSection}>
-                  <input
-                    className={s.formInput}
-                    type='text'
-                    name='name'
-                    placeholder='Name...'
-                    value={videogame.name}
-                    onChange={handleChange}
-                    required
-                    />
-                    {errors.name && (
-                      <p className={s.error}>{errors.name}</p>
-                    )}
-                </div>
-
-
-                <div className={s.formSection}>
-                  <input
-                    className={s.formInput}
-                    type='text'
-                    name='image'
-                    placeholder= 'URL image...'
-                    value={videogame.image}
-                    onChange={handleChange} />
-                </div>
-
-                <div className={s.formSection}>
-                  <input
-                    className={s.formDate}
-                    type='date'
-                    name='realeseDate'
-                    placeholder= 'Release Date'
-                    value={videogame.realeseDate}
-                    required
-                    onChange={handleChange} />
-                    {errors.realeseDate && (
-                    <p className={s.error}>{errors.realeseDate}</p>
-                  )}
-                </div>
-
-                <div className={s.formSection}>
-                  <textarea
-                    className={s.textarea}
-                    name= 'description'
-                    placeholder= 'Description...'
-                    maxLength="200"
-                    required
-                    value= {videogame.description}
-                    onChange={handleChange}>
-                  </textarea>
-                  {errors.description && (
-                      <p className={s.error}>{errors.description}</p>
-                      )}
-                </div>     
-    
-                <div className={s.formSection}>
-                  <input
-                    className={s.formInput}
-                    type='number'
-                    name='rating'
-                    min= '1'
-                    max='5'
-                    placeholder= '1-5'
-                    value={videogame.rating}
-                    onChange={handleChange}
-                    required />
-                    {errors.rating && (
-                    <p className={s.error}>{errors.rating}</p>
-                  )}
-                </div>
+      }
       
-                <div className={s.formSection}>
-                  <div className={s.genrePlatforms}>
-                    <select className={s.select} onChange={handleSelectGenres} defaultValue={'DEFAULT'}>
-                    <option value="DEFAULT" disabled>Choose at least one Genre</option>
-                        {genres.map((g) => (
-                          <option value={g.name} key={g.id}>{g.name}</option>
-                        ))}
-                    </select>
+  function handleDeleteGenre(genre) {
+    setVideogame({
+      ...videogame,
+      genres: videogame.genres.filter(g => g !== genre)
+      })
+  }
+          
+  function handleDeletePlatform(platform) {
+    setVideogame({
+      ...videogame,
+      platforms: videogame.platforms.filter(p => p !== platform)
+    })
+  }
+         
+  return (        
+    <div className={s.container}>
+        
+      <div className={s.navbar}>
+          <span className={s.title1}> Land of Videogames</span>
+            <Link to='/home' className={s.link}>
+              <button className={s.button}>Home</button>
+            </Link>
+      </div>
+                 
+      <div className={s.formcontainer}>
+        <form className={s.form} onSubmit={handleSubmit}>
+          <h2>Create your Videogame</h2>
+  
+            <div className={s.formSection}>
+              <input
+                className={s.formInput}
+                type='text'
+                name='name'
+                placeholder='Name...'
+                value={videogame.name}
+                onChange={handleChange}
+                required
+                />
+                {errors.name && (
+                  <p className={s.error}>{errors.name}</p>
+                )}
+            </div>
 
-                    <div className={s.gridformat}>
-                      {videogame.genres.map(g =>
-                        <div  className={s.choices} key={g}>
-                          <p >{g}</p>
-                          <input className={s.buttonDelete} type="button" value='x' onClick={()=> handleDeleteGenre(g)} /> 
-                        </div>
-                        )}
-                    </div>
-                      
-                    {errors.genres && (
-                      <p className={s.error}>{errors.genres}</p>
-                      )}
+            <div className={s.formSection}>
+              <input
+                className={s.formInput}
+                type='text'
+                name='image'
+                placeholder= 'URL image...'
+                value={videogame.image}
+                onChange={handleChange} />
+            </div>
 
-                  </div>
-                </div>
+            <div className={s.formSection}>
+              <input
+                className={s.formDate}
+                type='date'
+                name='realeseDate'
+                placeholder= 'Release Date'
+                value={videogame.realeseDate}
+                required
+                onChange={handleChange} />
+                {errors.realeseDate && (
+                <p className={s.error}>{errors.realeseDate}</p>
+              )}
+            </div>
 
-                <div className={s.formSection}>
-                  <div className={s.genrePlatforms}>
-                    <select className={s.select} onChange={handleSelectPlatforms} defaultValue={'DEFAULT'}>
-                    <option value="DEFAULT" disabled>Choose at least one Platform</option>
-                        {platforms.map((p) => (
-                          <option key={p.id} value={p}>{p}</option>
-                        ))}
-                    </select>
-
+            <div className={s.formSection}>
+              <textarea
+                className={s.textarea}
+                name= 'description'
+                placeholder= 'Description...'
+                maxLength="200"
+                required
+                value= {videogame.description}
+                onChange={handleChange}>
+              </textarea>
+              {errors.description && (
+                  <p className={s.error}>{errors.description}</p>
+                  )}
+            </div>     
+    
+            <div className={s.formSection}>
+              <input
+                className={s.formInput}
+                type='number'
+                name='rating'
+                min= '1'
+                max='5'
+                placeholder= '1-5'
+                value={videogame.rating}
+                onChange={handleChange}
+                required />
+                {errors.rating && (
+                <p className={s.error}>{errors.rating}</p>
+              )}
+            </div>
+      
+            <div className={s.formSection}>
+              <div className={s.genrePlatforms}>
+                <select className={s.select} onChange={handleSelectGenres} defaultValue={'DEFAULT'}>
+                <option value="DEFAULT" disabled>Choose at least one Genre</option>
+                    {genres.map((g) => (
+                    <option value={g.name} key={g.id}>{g.name}</option>
+                    ))}
+                </select>
                 <div className={s.gridformat}>
-                    {videogame.platforms.map(p =>
-                      <div  className={s.choices} key={p}>
-                        <p >{p}</p>
-                        <input className={s.buttonDelete} type="button" value='x' onClick={() => handleDeletePlatform(p)} />
-                      </div>
-                      )}
-                </div>
+                  {videogame.genres.map(g =>
+                    <div  className={s.choices} key={g}>
+                      <p >{g}</p>
+                      <input className={s.buttonDelete} type="button" value='x' onClick={()=> handleDeleteGenre(g)} /> 
+                    </div>
+                    )}
+            </div>
+                {errors.genres && (
+                  <p className={s.error}>{errors.genres}</p>
+                  )}
 
-                      {errors.platforms && (
-                        <p className={s.error}>{errors.platforms}</p>
-                        )}
+        </div>
+        </div>
 
-                  </div>
+            <div className={s.formSection}>
+              <div className={s.genrePlatforms}>
+                <select className={s.select} onChange={handleSelectPlatforms} defaultValue={'DEFAULT'}>
+                <option value="DEFAULT" disabled>Choose at least one Platform</option>
+                    {platforms.map((p) => (
+                      <option key={p.id} value={p}>{p}</option>
+                    ))}
+                </select>
+
+          <div className={s.gridformat}>
+              {videogame.platforms.map(p =>
+                <div  className={s.choices} key={p}>
+                  <p >{p}</p>
+                  <input className={s.buttonDelete} type="button" value='x' onClick={() => handleDeletePlatform(p)} />
                 </div>
-                
-                <div className={s.buttonSection}>
-                  <input className={s.button2} 
-                    type="submit" 
-                    value="CREATE" 
-                    disabled={!videogame.name || errors.name || errors.description || errors.realeseDate || errors.rating || errors.genres || errors.platforms} />
-                </div>
-            </form>
+                )}
+          </div>
+
+                {errors.platforms && (
+                  <p className={s.error}>{errors.platforms}</p>
+                  )}
+
             </div>
           </div>
-        )
+                
+          <div className={s.buttonSection}>
+            <input className={s.button2} 
+              type="submit" 
+              value="CREATE" 
+              disabled={!videogame.name || errors.name || errors.description || errors.realeseDate || errors.rating || errors.genres || errors.platforms} />
+          </div>
+      </form>
+    </div>
+  </div>
+  )
 };
 
 

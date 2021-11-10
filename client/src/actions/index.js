@@ -1,16 +1,16 @@
-  const axios = require('axios');
-  export const GET_VIDEOGAMES = 'GET_VIDEOGAMES';
-  export const SEARCH_VIDEOGAME = 'SEARCH_VIDEOGAME';
-  export const FILTER_GENRE = 'FILTER_GENRE';
-  export const GET_GENRES = 'GET_GENRES';
-  export const POST_VIDEOGAME = 'POST_VIDEOGAME';
-  export const ALPHABETICAL_SORT = 'ALPHABETICAL_SORT';
-  export const RATING_SORT = 'RATING_SORT';
-  export const FILTER_CREATED = 'FILTER_CREATED';
-  export const GET_DETAIL = 'GET_DETAIL';
+const axios = require('axios');
+export const GET_VIDEOGAMES = 'GET_VIDEOGAMES';
+export const SEARCH_VIDEOGAME = 'SEARCH_VIDEOGAME';
+export const FILTER_GENRE = 'FILTER_GENRE';
+export const GET_GENRES = 'GET_GENRES';
+export const POST_VIDEOGAME = 'POST_VIDEOGAME';
+export const ALPHABETICAL_SORT = 'ALPHABETICAL_SORT';
+export const RATING_SORT = 'RATING_SORT';
+export const FILTER_CREATED = 'FILTER_CREATED';
+export const GET_DETAIL = 'GET_DETAIL';
+export const CLEAR_DETAIL = 'CLEAR_DETAIL';
 
-
-  export function getVideogames(){
+export function getVideogames(){
     return async function(dispatch){
         try {
             var response = await axios.get('http://localhost:3001/videogames')
@@ -24,7 +24,7 @@
     }
 }
 
-  export function searchVideogame(search){
+export function searchVideogame(search){
     return async function(dispatch){
         try {
             var response = await axios.get(`http://localhost:3001/videogames?name=${search}`);
@@ -53,7 +53,6 @@ export function filterGenre(search){
     }
 };
 
-
 export function getGenres() {
     return async function(dispatch) {
         try {
@@ -67,7 +66,6 @@ export function getGenres() {
         }
     }
 };
-
 
 export function postVideogame(payload) {
     return async function (dispatch) {
@@ -105,7 +103,6 @@ export function filterCreated(payload) {
     }
 };
 
-
 export function getDetail(id) {
     return async function(dispatch) {
         try {
@@ -117,6 +114,12 @@ export function getDetail(id) {
         } catch (error) {
             console.log(error)
         }
+    }
+};
+
+export function clearDetail() {
+    return {
+        type: CLEAR_DETAIL,
     }
 };
 

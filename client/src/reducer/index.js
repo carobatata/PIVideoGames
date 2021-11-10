@@ -1,4 +1,4 @@
-import { FILTER_CREATED, GET_VIDEOGAMES, SEARCH_VIDEOGAME, ALPHABETICAL_SORT, GET_GENRES, FILTER_GENRE, RATING_SORT, POST_VIDEOGAME, GET_DETAIL } from '../actions';
+import { CLEAR_DETAIL, FILTER_CREATED, GET_VIDEOGAMES, SEARCH_VIDEOGAME, ALPHABETICAL_SORT, GET_GENRES, FILTER_GENRE, RATING_SORT, POST_VIDEOGAME, GET_DETAIL } from '../actions';
 
 const initialState = {
     videogames : [],
@@ -86,13 +86,17 @@ const initialState = {
                 nameOrder: 'default',
                 genreFilter: 'default',
                 creationFilter: status
-                // filteredVideogames: action.payload === 'all'? state.allVideogames: filterCreated
             }
         case GET_DETAIL:
             return{
                 ...state,
                 detail: action.payload
                 }
+        case CLEAR_DETAIL:
+            return{
+                ...state,
+                detail: []
+            }
         default:
             return state;
       }  

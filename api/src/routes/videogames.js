@@ -5,8 +5,6 @@ const axios = require('axios');
 const { APIKEY } = process.env;
 const {Op} = require('sequelize');
 
-
-
 router.get('/', async (req, res, next) => {
     const { name, genre } = req.query;
 
@@ -69,16 +67,10 @@ router.get('/', async (req, res, next) => {
             videogamePromiseDb = mapVideogameFromDB(videogamePromiseDb)
 
             allVideogames = [...videogamePromiseDb, ...videogamePromiseApi];
-         }
-    
-        else {
-            
-            allVideogames = await getAllVideogames();
-           
-        }
-            res.send(allVideogames);
-       
-
+         } else {       
+                allVideogames = await getAllVideogames();  
+            }
+        res.send(allVideogames);
     }
         catch (error) {
         next(error);
@@ -144,7 +136,5 @@ function mapVideogameFromDB(videogames) {
             createdInDb: v.createdInDb
             }})
 };
-
-
 
 module.exports = router;
