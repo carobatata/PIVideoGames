@@ -9,9 +9,6 @@ import React from "react";
 import Home from './components/Home/Home'
 import SearchBar from './components/SearchBar/SearchBar';
 import Videogames from './components/Videogames/Videogames';
-import FilterByCreation from './components/Filters/FilterByCreation.jsx';
-import FilterByGenre from './components/Filters/FilterByGenre';
-import Order from './components/Orders/Order';
 import {configure, shallow} from 'enzyme';
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 
@@ -25,15 +22,6 @@ describe("<Home />", () => {
   });
   it("should render a component <SearchBar/>", () => {
     expect(wrapper.find(SearchBar)).toHaveLength(1);
-  });
-  it("should render a component <Order/>", () => {
-    expect(wrapper.find(Order)).toHaveLength(1);
-  });
-  it("should render a component <FilterByGenre/>", () => {
-    expect(wrapper.find(FilterByGenre)).toHaveLength(1);
-  });
-  it("should render a component <FilterByCreation/>", () => {
-    expect(wrapper.find(FilterByCreation)).toHaveLength(1);
   });
   it("should render a component <Videogames/>", () => {
     expect(wrapper.find(Videogames)).toHaveLength(1);

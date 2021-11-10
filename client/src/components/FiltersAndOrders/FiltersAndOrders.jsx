@@ -44,7 +44,7 @@ export default function FiltersAndOrders({setCurrentPage}) {
         <div>
         
             <select className={s.select} name="Order" onChange={handleSelectChange} value={nameOrder}>
-                <option value='default' disabled>Order</option>
+                <option value='default' disabled>Orders</option>
                 <option value='ascendente'>A-Z</option>
                 <option value='descendente'>Z-A</option>
                 <option value='asc'>Lowest to Best Rating</option>
@@ -52,7 +52,7 @@ export default function FiltersAndOrders({setCurrentPage}) {
             </select>
 
             <select className={s.select} name="Genre Filter" onChange={handleFilterGenre} value={genreFilter}>
-                <option value='default' disabled>Genre</option>
+                <option value='default' disabled>Genres</option>
                 {genres.map((g) =>(
                     <option key={g.id} value={g.name}>{g.name}</option>
                     ))}

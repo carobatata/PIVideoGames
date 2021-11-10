@@ -68,7 +68,7 @@ export default function Videogames() {
             : 
             <div className={s.novideogame}>
                 <h2>LOADING...</h2>
-                <h4> If persists for more than 15 seconds: </h4>
+                <h4> If persists more than 15 seconds: </h4>
                 <h4> Sorry! There is no match for your search. </h4>
                 <img className={s.photo} src="https://preview.redd.it/zqqvyy6rtll61.png?auto=webp&s=c0893407ab92d129cba70a606e9e64b5afe014e7" alt="SadMarioBross" />
             </div>
