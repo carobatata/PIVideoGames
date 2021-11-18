@@ -13,7 +13,7 @@ export const CLEAR_DETAIL = 'CLEAR_DETAIL';
 export function getVideogames(){
     return async function(dispatch){
         try {
-            var response = await axios.get('http://localhost:3001/videogames')
+            var response = await axios.get(`/videogames`)
             return dispatch({
                 type: GET_VIDEOGAMES,
                 payload: response.data
@@ -27,7 +27,7 @@ export function getVideogames(){
 export function searchVideogame(search){
     return async function(dispatch){
         try {
-            var response = await axios.get(`http://localhost:3001/videogames?name=${search}`);
+            var response = await axios.get(`/videogames?name=${search}`);
             return dispatch({
                 type: SEARCH_VIDEOGAME,
                 payload: response.data
@@ -41,7 +41,7 @@ export function searchVideogame(search){
 export function filterGenre(search){
     return async function(dispatch){
         try {
-            var response = await axios.get(`http://localhost:3001/videogames?genre=${search}`);
+            var response = await axios.get(`/videogames?genre=${search}`);
             return dispatch({
                 type: FILTER_GENRE,
                 payload: response.data,
@@ -56,7 +56,7 @@ export function filterGenre(search){
 export function getGenres() {
     return async function(dispatch) {
         try {
-            var genres = await axios('http://localhost:3001/genres')
+            var genres = await axios(`/genres`)
             return dispatch({
                 type: GET_GENRES,
                 payload: genres.data
@@ -70,7 +70,7 @@ export function getGenres() {
 export function postVideogame(payload) {
     return async function (dispatch) {
         try {
-            const response = await axios.post('http://localhost:3001/videogame', payload);
+            const response = await axios.post(`/videogame`, payload);
             console.log(response);
             return dispatch ({
                 type: POST_VIDEOGAME,
@@ -106,7 +106,7 @@ export function filterCreated(payload) {
 export function getDetail(id) {
     return async function(dispatch) {
         try {
-            const response = await axios.get(`http://localhost:3001/videogame/${id}`)
+            const response = await axios.get(`/videogame/${id}`)
             return dispatch({
                 type: 'GET_DETAIL',
                 payload: response.data
